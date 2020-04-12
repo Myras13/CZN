@@ -1,1 +1,1 @@
-alert("Dziala");
+alert("Dziala")
