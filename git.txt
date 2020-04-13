@@ -28,7 +28,7 @@ NetHood               Ustawienia\ lokalne
 NTUSER.DAT            Videos
 
 Michu@DESKTOP-PQGDM01 MINGW64 ~
-$ cd c:/xampp/htdocs
+$ cd c:/xampp/htdocs 
 
 Michu@DESKTOP-PQGDM01 MINGW64 /c/xampp/htdocs
 $ dir
