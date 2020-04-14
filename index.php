@@ -41,6 +41,5 @@
 
 
         </div>
-        <!--Dodaje komentarz w celu testu git-a-->
     </body>
 </html>
