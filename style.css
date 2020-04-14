@@ -1,0 +1,114 @@
+body
+{
+    background-color: lightgray;
+}
+
+#container
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logo
+{
+    background-color: #cdffa7;
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    padding: 10px;
+    margin-top: 20px;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 5px;
+}
+
+#topbar
+{
+    background-color: #cdffa7;
+    margin-top: 20px;
+}
+
+.option
+{
+    background-color: gray;
+    float: left;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.option:hover
+{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+#content
+{
+    margin-top: 20px;
+    background-color: #cdffa7;
+}
+
+#footer
+{
+    background-color: #cdffa7;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#title_1
+{
+    text-align: center;
+    font-size: 35px;
+    padding: 20px;
+}
+
+#image
+{
+    float: left;
+    width: 358px;
+    padding: 20px;
+    text-align: center;
+    border-right: 2px dashed black;
+}
+
+#components
+{
+    float: left;
+    width: 540px;
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+#preparation
+{
+    clear: both;
+    padding-top: 20px;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 20px;
+    text-align: justify;
+}
+
+.name
+{
+    font-size: 30px;
+}
+
+#content_1
+{
+    margin-top: 20px;
+    background-color: #cdffa7;
+    padding: 40px;
+    text-align: justify;
+}
