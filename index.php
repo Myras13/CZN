@@ -5,6 +5,7 @@
         <title>Coś z niczego</title>
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin-ext" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap&subset=latin-ext" rel="stylesheet">
     </head>
 
     <body>
@@ -14,15 +15,15 @@
             </div>
 
             <div id="topbar">
-                <a href="index.html"><div class="option">Strona główna</div></a>
+                <a href="index.php"><div class="option">Strona główna</div></a>
                 <div class="option">Baza przepisów</div>
                 <div class="option">O nas</div>
                 <div class="option">Pasek wyszukiwania</div>
-                <div class="option">Konto</div>
+                <a href="logowanie_rejestracja.php"><div class="option">Konto</div></a>
                 <div style="clear: both;"></div>
             </div>
 
-            <div id="content_1">
+            <div id="content_index">
                 <span class="name">Co to za strona i jak się po niej poruszać?</span>
                 <br/><br/>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet ultricies malesuada. Proin non enim tortor. Mauris rutrum scelerisque venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris pharetra ut eros eget tempor. Sed tincidunt ut ligula in pharetra. Curabitur dignissim, eros id semper elementum, orci nibh fringilla velit, in consectetur nisl massa nec est. Etiam eu lectus scelerisque, euismod turpis non, sodales est. Etiam ipsum felis, maximus tempus pellentesque eget, vulputate quis justo. Sed faucibus purus in ornare faucibus. Proin a convallis ante, in ultricies libero. Vivamus suscipit tellus leo, eu consectetur velit hendrerit a. Pellentesque sed dapibus nisl, ornare maximus massa. Sed ultricies mi odio. Pellentesque metus dolor, maximus tincidunt facilisis at, luctus in est. Nulla fringilla lectus libero, nec ultrices libero efficitur vitae.
