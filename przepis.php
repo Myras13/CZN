@@ -5,6 +5,7 @@
         <title>Coś z niczego</title>
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin-ext" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap&subset=latin-ext" rel="stylesheet">
     </head>
 
     <body>
@@ -14,15 +15,15 @@
             </div>
 
             <div id="topbar">
-                <a href="index.html"><div class="option">Strona główna</div></a>
+                <a href="index.php"><div class="option">Strona główna</div></a>
                 <div class="option">Baza przepisów</div>
                 <div class="option">O nas</div>
                 <div class="option">Pasek wyszukiwania</div>
-                <div class="option">Konto</div>
+                <a href="logowanie_rejestracja.php"><div class="option">Konto</div></a>
                 <div style="clear: both;"></div>
             </div>
 
-            <div id="content">
+            <div id="content_przepisu">
                 <div id="title_1">
                     Zapiekanka makaronowa
                 </div>
