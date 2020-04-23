@@ -1,3 +1,10 @@
+<?php
+
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
+
+?>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -15,7 +22,7 @@
                     <!--PANEL LOGOWANIA-->
                 <div id="panel_logowania_rejestracji">
                     <span class="name">Zaloguj się</span>
-                    <form>
+                    <form action="php/controller/C_LogIn.php" method="post">
                         <br/>
                         <label for="login_e-mail">e-mail</label><br/>
                         <input id="login_e-mail" name="login_e-mail" type="text"/><br/><br/>
