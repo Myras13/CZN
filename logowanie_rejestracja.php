@@ -1,34 +1,28 @@
+<?php
+
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
+
+?>
+
 <!DOCTYPE HTML>
 <html>
     <head>
-        <meta charset="utf-8"/>
-        <title>Coś z niczego</title>
-        <link href="style.css" rel="stylesheet" type="text/css"/>
-        <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin-ext" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap&subset=latin-ext" rel="stylesheet">
+        <?php include("templates/head.php") ?>
     </head>
 
     <body>
         <div id="container">
-            <div id="logo">
-                Coś z niczego!
-            </div>
-
-            <div id="topbar">
-                <a href="index.php"><div class="option">Strona główna</div></a>
-                <div class="option">Baza przepisów</div>
-                <div class="option">O nas</div>
-                <div class="option">Pasek wyszukiwania</div>
-                <a href="logowanie_rejestracja.php"><div class="option">Konto</div></a>
-                <div style="clear: both;"></div>
-            </div>
+            
+            <?php include("templates/logo.php") ?>
+            <?php include("templates/topbar.php") ?>
 
             <div id="content_logowanie_rejestracja">
                     
                     <!--PANEL LOGOWANIA-->
                 <div id="panel_logowania_rejestracji">
                     <span class="name">Zaloguj się</span>
-                    <form>
+                    <form action="php/controller/C_LogIn.php" method="post">
                         <br/>
                         <label for="login_e-mail">e-mail</label><br/>
                         <input id="login_e-mail" name="login_e-mail" type="text"/><br/><br/>
@@ -69,13 +63,7 @@
                 <div style="clear: both;"></div>
             </div>
 
-            <div id="footer">
-                Coś z niczego &copy; All rights reserved
-            </div>
-
-
-
-
+            <?php include("templates/footer.php") ?>
 
         </div>
     </body>
