@@ -6,8 +6,8 @@
 
     class M_LogIn extends ManagementUser{
 
-        private ConnectDatabase $pdo; 
-        private string $pagePassword; 
+        private $pdo; 
+        private $pagePassword; 
 
         public function __construct(ConnectDatabase $_pdo, string $_email, string $_password){
 
@@ -29,10 +29,8 @@
             $sthPDO = $this->pdo->getPDO();           
             $userAccount = new ValidateEmail();
 
-            if(!$userAccount->isEmailExist($sthPDO, $this->email)){
+            if(!$userAccount->isEmailExist($sthPDO, $this->email))
                 throw new NullAccountException("This account doesn't exist", 1);
-                return false;            
-            }
 
             $sth = $sthPDO->prepare("SELECT COUNT(email) FROM users_account WHERE email = :email AND password = :password");
             $sth->bindValue(':email', $this->email, PDO::PARAM_STR);

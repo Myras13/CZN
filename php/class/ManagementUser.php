@@ -2,16 +2,16 @@
 
     abstract class ManagementUser{
 
-        private ConnectDatabase $pdo;
-        protected int $id;
-        protected string $nick;
-        protected string $email;
-        protected int $age;
-        protected int $permission;
-        protected int $isAccess;
-        protected string $acc_creation_date;
-        protected string $date_lock;
-        protected string $token;
+        private $pdo;
+        protected $id;
+        protected $nick;
+        protected $email;
+        protected $age;
+        protected $permission;
+        protected $isAccess;
+        protected $acc_creation_date;
+        protected $date_lock;
+        protected $token;
 
         public function __construct(ConnectDatabase $_pdo, string $_email){
 

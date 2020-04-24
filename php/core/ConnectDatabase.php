@@ -2,7 +2,7 @@
 
     class ConnectDatabase{
 
-        private PDO $pdo;
+        private $pdo;
 
         public function connect($database){
 
