@@ -1,3 +1,11 @@
+<?php
+
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+ 
+
+?>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -5,6 +13,7 @@
     </head>
 
     <body>
+        <?php require_once('php/view/V_SessionNotifications.php');?>
         <div id="container">
             
             <?php include("templates/logo.php") ?>
