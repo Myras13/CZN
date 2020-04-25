@@ -4,14 +4,22 @@
 
     class SessionUser extends ManagementSession{
 
-        public function create(ManagementUser $_user){
+        private $user;
+
+        public function __construct(ManagementUser $_user){
+
+            $this->user = $_user;
+
+        }
+
+        public function create(){
 
             if (session_status() == PHP_SESSION_NONE)
                 session_start();
             
-            $_SESSION["nick"] = $_user->getNick();
-            $_SESSION["isAccess"] = $_user->getIsAccess();
-            $_SESSION["token"] = $_user->getToken();
+            $_SESSION["nick"] = $this->user->getNick();
+            $_SESSION["isAccess"] = $this->user->getIsAccess();
+            $_SESSION["token"] = $this->user->getToken();
             $_SESSION["LogInActive"] = 1;
 
         }

@@ -24,11 +24,10 @@
     
         try{
 
-            $user->isRegistered();
-            
+            $user->isRegistered();            
             session_start();
-            $handle = new SessionUser();
-            $handle->create($user);
+            $handle = new SessionUser($user);
+            $handle->create();
 
         }catch(NullAccountException $e){
 
