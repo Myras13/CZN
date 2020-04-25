@@ -1,6 +1,6 @@
 <?php
 
-    require_once('../class/ManagementSession.php');
+    require_once(dirname(__DIR__).'/class/ManagementSession.php');
 
     class SessionUser extends ManagementSession{
 
@@ -25,8 +25,11 @@
         }
 
         public function destroy(){
+            
+            if (session_status() == PHP_SESSION_NONE)
                 session_start();
-                session_destroy();        
+
+            session_destroy();        
         }
 
     }

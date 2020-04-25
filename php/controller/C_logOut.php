@@ -1,6 +1,6 @@
 <?php
 
-    require_once('../class/SessionUser.php');
+    require_once(dirname(__DIR__).'/class/SessionUser.php');
 
     SessionUser::destroy();
 
