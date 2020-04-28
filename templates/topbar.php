@@ -6,7 +6,7 @@
     <?php
 
         if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION["LogInActive"])){
-            echo "<a href='php/view/account.php'><div class='option'>Moje Konto</div></a>";   
+            echo "<a href='php/account.php'><div class='option'>Moje Konto</div></a>";   
             echo "<a href='php/controller/C_logOut.php'><div class='option'>Wyloguj</div></a>";
             echo "Witaj ".$_SESSION["nick"];
         }
