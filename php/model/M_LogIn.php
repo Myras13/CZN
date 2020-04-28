@@ -1,8 +1,8 @@
 <?php
 
-    require_once('../class/ManagementUser.php');
-    require_once('../class/ValidateEmail.php');
-    require_once('../classException/NullAccountException.php');
+    require_once(dirname(__DIR__).'/class/ManagementUser.php');
+    require_once(dirname(__DIR__).'/class/ValidateEmail.php');
+    require_once(dirname(__DIR__).'/classException/NullAccountException.php');
 
     class M_LogIn extends ManagementUser{
 

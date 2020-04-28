@@ -1,12 +1,19 @@
 <?php
 
-    require_once('../core/ConnectDatabase.php');
-    require_once('../model/M_LogIn.php');    
-    require_once('../config/config_connect.php');
-    require_once('../class/SessionUser.php');
+    require_once(dirname(__DIR__).'/core/ConnectDatabase.php');
+    require_once(dirname(__DIR__).'/model/M_LogIn.php');    
+    require_once(dirname(__DIR__).'/config/config_connect.php');
+    require_once(dirname(__DIR__).'/class/SessionUser.php');
+    require_once(dirname(__DIR__).'/class/SessionNotifications.php');
+
+    $host  = $_SERVER['HTTP_HOST'];
 
     if (!isset($_POST['login_e-mail']) && !isset($_POST['login_password'])){
-        die("Error: Input doesn't exist");
+
+        $errorInfo = new SessionNotifications('error', 'Błąd krytyczny', "Nie wykryto wszystkich pól danych.");
+        $errorInfo->create();            
+        header("Location: http://$host/CZN/logowanie_rejestracja.php");
+
     }
   
         try{
@@ -16,7 +23,9 @@
 
         }catch(PDOException $e){
 
-            die($e->getMessage());
+            $errorInfo = new SessionNotifications('error', 'Błąd krytyczny',"Nie udało połączyć się z bazą danych.");
+            $errorInfo->create();            
+            header("Location: http://$host/CZN");
 
         }
 
@@ -24,21 +33,18 @@
     
         try{
 
-            $user->isRegistered();
-            
+            $user->isRegistered();            
             session_start();
-            $handle = new SessionUser();
-            $handle->create($user);
-
+            $handle = new SessionUser($user);
+            $handle->create();
+            header("Location: http://$host/CZN/");
+            
         }catch(NullAccountException $e){
 
-            die($e->getMessage());
-
-        }finally{
-
-            $host  = $_SERVER['HTTP_HOST'];
-            header("Location: http://$host/CZN");
-
+            $errorInfo = new SessionNotifications('alert', 'Próba nie udana', $e->getMessage());
+            $errorInfo->create();
+            header("Location: http://$host/CZN/logowanie_rejestracja.php");
+            return;
         }
 
 

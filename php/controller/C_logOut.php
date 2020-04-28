@@ -1,9 +1,10 @@
 <?php
 
-    require_once('../class/SessionUser.php');
+    require_once(dirname(__DIR__).'/class/SessionUser.php');
 
-    $handle = new SessionUser();
-    $handle->destroy();
+    $reflector = new ReflectionClass('SessionUser');
+    $instance = $reflector->newInstanceWithoutConstructor();
+    $instance->destroy();
 
     $host  = $_SERVER['HTTP_HOST'];
     header("Location: http://$host/CZN");

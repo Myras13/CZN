@@ -1,24 +1,35 @@
 <?php
 
-    require_once('../class/ManagementSession.php');
+    require_once(dirname(__DIR__).'/class/ManagementSession.php');
 
     class SessionUser extends ManagementSession{
 
-        public function create(ManagementUser $_user){
+        private $user;
+
+        public function __construct(ManagementUser $_user){
+
+            $this->user = $_user;
+
+        }
+
+        public function create(){
 
             if (session_status() == PHP_SESSION_NONE)
                 session_start();
             
-            $_SESSION["nick"] = $_user->getNick();
-            $_SESSION["isAccess"] = $_user->getIsAccess();
-            $_SESSION["token"] = $_user->getToken();
+            $_SESSION["nick"] = $this->user->getNick();
+            $_SESSION["isAccess"] = $this->user->getIsAccess();
+            $_SESSION["token"] = $this->user->getToken();
             $_SESSION["LogInActive"] = 1;
 
         }
 
         public function destroy(){
+            
+            if (session_status() == PHP_SESSION_NONE)
                 session_start();
-                session_destroy();        
+
+            session_destroy();        
         }
 
     }
