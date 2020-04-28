@@ -7,6 +7,7 @@
         protected $nick;
         protected $email;
         protected $age;
+        protected $describe;
         protected $permission;
         protected $isAccess;
         protected $acc_creation_date;
@@ -26,7 +27,8 @@
             $this->id = null;
             $this->nick = null;
             $this->email = null;
-            $this->age = null;
+            $this->age = null;            
+            $this->describe = null;
             $this->permission = null;
             $this->isAccess = null;
             $this->acc_creation_date = null;
@@ -83,6 +85,7 @@
             $this->id = $result['id_user'];
             $this->nick = $result['nick'];
             $this->age = (int)$result['age'];
+            $this->describe = $result['describe_user'];
             $this->permission = (int)$result['permission'];
             $this->isAccess = (int)$result['isAccess'];          
             $this->acc_creation_date = date('Y-m-d', strtotime($result['acc_creation_date']));
