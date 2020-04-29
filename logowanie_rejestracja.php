@@ -21,7 +21,7 @@
             <div id="content_logowanie_rejestracja">
                     
                     <!--PANEL LOGOWANIA-->
-                <div id="panel_logowania_rejestracji">
+                <div class="panel_logowania_rejestracji_konta">
                     <span class="name">Zaloguj się</span>
                     <form action="php/controller/C_LogIn.php" method="post">
                         <br/>
@@ -38,7 +38,7 @@
 
 
                     <!--PANEL REJESTRACJI-->
-                <div id="panel_logowania_rejestracji">
+                <div class="panel_logowania_rejestracji_konta">
                     <span class="name">Zarejestruj się</span>
                     <form action="php/controller/C_RegUser.php" method="post">
                         <br/>
