@@ -15,18 +15,29 @@ body
 
 #logo
 {
-    color: black;
-    text-align: center;
-    font-size: 40px;
-    padding: 10px;
     margin-top: 20px;
+    padding: 10px;
+}
+
+#logo_L
+{
+    float: left;
+}
+
+#logo_R
+{
+    float: left;
+    color: black;
+    font-size: 50px;
     font-family: 'Lobster', cursive;
     letter-spacing: 5px;
+    text-align: center;
+    width: 740px;
+    padding: 20px;
 }
 
 #topbar
 {
-    margin-top: 20px;
     background-color: #d4d0cd;
 }
 
@@ -69,7 +80,7 @@ body
     min-height: 400px;
 }
 
-#panel_logowania_rejestracji
+.panel_logowania_rejestracji_konta
 {
     float: left;
     width: 420px;
@@ -125,4 +136,9 @@ body
 .name
 {
     font-size: 30px;
+}
+
+#content_account
+{
+    min-height: 400px;
 }
