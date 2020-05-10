@@ -8,39 +8,29 @@
 
     class M_LogIn extends ManagementUser{
 
-        private $pdo; 
-        private $pagePassword; 
+        public function __construct(){
 
-        public function __construct(ConnectDatabase $_pdo, string $_email, string $_password){
-
-            parent::__construct($_pdo, $_email);
-            $this->pagePassword = hash('sha512', htmlspecialchars($_password));
-            $this->pdo = $_pdo;
+            parent::__construct();
             
         } 
 
-        public function __destruct(){
+        public function logIn(string $email, string $password):bool{           
 
-            $this->pdo->disconnect();
+            $pagePassword = hash('sha512', $password);
 
-        } 
-
-        public function logIn():bool{           
-
-            
-            $sthPDO = $this->pdo->getPDO();           
+            $sthPDO = $this->pdo;           
             $userAccountEmail = new ValidateEmail();  
             $userAccountValidate = new ValidateAccount();
 
-            if(!$userAccountEmail->isEmailExist($sthPDO, $this->email))
+            if(!$userAccountEmail->isEmailExist($sthPDO, $email))
                 throw new NullAccountException("Takie konto nie istnieje.", 1);
             
-            if(!$userAccountValidate->isValidate($sthPDO, $this->email))
+            if(!$userAccountValidate->isValidate($sthPDO, $email))
                 throw new ValidateDataUserException("Konto nie zostało jeszcze zweryfikowane. Sprawdź swoją pocztę", 6);
 
             $sth = $sthPDO->prepare("SELECT COUNT(email) FROM users_account WHERE email = :email AND password = :password");
-            $sth->bindValue(':email', $this->email, PDO::PARAM_STR);
-            $sth->bindValue(':password', $this->pagePassword, PDO::PARAM_STR);
+            $sth->bindValue(':email', $email, PDO::PARAM_STR);
+            $sth->bindValue(':password', $pagePassword, PDO::PARAM_STR);
             $sth->execute();
 
             $result = $sth->fetch();
@@ -51,7 +41,7 @@
                 throw new NullAccountException("Hasło jest nieprawidłowe.", 1);
             }
             else{
-                $this->loadData();
+                $this->loadData($email);
                 return true;
             }
 

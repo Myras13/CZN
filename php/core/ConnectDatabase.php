@@ -4,17 +4,18 @@
 
         private $pdo;
 
-        public function connect($database){
+        public function connect(){
 
             try{
 
-               $this->pdo = new PDO('mysql:host='.$database['host'].';dbname='.$database['dbname'].'', $database['login'], $database['password']);
-               $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);              
+                require_once(dirname(__DIR__).'/config/config_connect.php');
+                $this->pdo = new PDO('mysql:host='.$database['host'].';dbname='.$database['dbname'].'', $database['login'], $database['password']);
+                $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);              
 
             }
             catch(PDOException $e){
 
-               throw $e;
+                throw $e;
 
             }
 
