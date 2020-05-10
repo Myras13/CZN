@@ -25,10 +25,10 @@
 
         public function examine(string $emailAddress):bool{
 
-            $reg = "/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/";
+            $reg = "/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]/";
 
             if (!preg_match($reg, $emailAddress))
-                throw new ValidateDataUserException('Podany e-mail nie przeszedł walidacji',5);
+                return false;
 
             return true;           
 
