@@ -33,7 +33,7 @@
     
         try{
 
-            $user->isRegistered();            
+            $user->logIn();            
             session_start();
             $handle = new SessionUser($user);
             $handle->create();
@@ -44,7 +44,13 @@
             $errorInfo = new SessionNotifications('alert', 'Próba nie udana', $e->getMessage());
             $errorInfo->create();
             header("Location: http://$host/CZN/logowanie_rejestracja.php");
-            return;
+
+        }catch(ValidateDataUserException $r){
+
+            $errorInfo = new SessionNotifications('info', 'Zweryfikuj swoje konto', $r->getMessage());
+            $errorInfo->create();
+            header("Location: http://$host/CZN/logowanie_rejestracja.php");
+
         }
 
 

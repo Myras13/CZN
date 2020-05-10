@@ -13,6 +13,7 @@
         protected $acc_creation_date;
         protected $date_lock;
         protected $token;
+        protected $isValidate;
 
         public function __construct(ConnectDatabase $_pdo, string $_email){
 
@@ -34,6 +35,7 @@
             $this->acc_creation_date = null;
             $this->date_lock = null;
             $this->token = null;
+            $this->isValidate = null;
             
         }
 
@@ -73,6 +75,10 @@
             return $this->token;
         }
 
+        public function getValidate():string{
+            return $this->isValidate;
+        }
+
         public function loadData(){
 
             $sthPDO = $this->pdo->getPDO();
@@ -90,6 +96,7 @@
             $this->isAccess = (int)$result['isAccess'];          
             $this->acc_creation_date = date('Y-m-d', strtotime($result['acc_creation_date']));
             $this->token = $result['token'];
+            $this->isValidate = $result['is_validate'];
 
             if(!isset($result['date_Lock']))
                 $this->date_lock = '';
