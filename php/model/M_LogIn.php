@@ -12,13 +12,13 @@
 
             parent::__construct();
             
-        } 
-
-        public function logIn(string $email, string $password):bool{           
+        }
+        
+        private function tryLog(string $email, string $password):bool{
 
             $pagePassword = hash('sha512', $password);
 
-            $sthPDO = $this->pdo;           
+            $sthPDO = $this->pdo->getPDO();           
             $userAccountEmail = new ValidateEmail();  
             $userAccountValidate = new ValidateAccount();
 
@@ -43,6 +43,30 @@
             else{
                 $this->loadData($email);
                 return true;
+            }
+
+        }
+
+        public function logIn($email, $password){           
+            
+            $host  = $_SERVER['HTTP_HOST']; 
+
+            try{
+                
+                $this->tryLog($email, $password);
+
+            }catch(NullAccountException $e){
+        
+                $errorInfo = new SessionNotifications('alert', 'Próba nie udana', $e->getMessage());
+                $errorInfo->create();
+                header("Location: http://$host/CZN/logowanie_rejestracja.php");
+        
+            }catch(ValidateDataUserException $r){
+        
+                $errorInfo = new SessionNotifications('info', 'Zweryfikuj swoje konto', $r->getMessage());
+                $errorInfo->create();
+                header("Location: http://$host/CZN/logowanie_rejestracja.php");
+        
             }
 
         }
