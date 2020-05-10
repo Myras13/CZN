@@ -23,7 +23,7 @@
 
                 $tmp = new ConnectDatabase();
                 $tmp->connect();
-                $this->pdo = $tmp->getPDO();
+                $this->pdo = $tmp;
     
             }catch(PDOException $e){
     
@@ -92,14 +92,16 @@
             return $this->isValidate;
         }
 
-        public function loadData(string $email){
+        public function loadData(string $email):bool{
 
-            $sthPDO = $this->pdo;
+            $sthPDO = $this->pdo->getPDO();
             $sth = $sthPDO->prepare("SELECT * FROM users_account WHERE email = :email");
             $sth->bindValue(':email', $email, PDO::PARAM_STR);
             $sth->execute();
 
             $result = $sth->fetch();
+            if($result == false)
+                return false;
 
             $this->id = $result['id_user'];
             $this->nick = $result['nick'];
@@ -118,6 +120,8 @@
 
             $sth->closeCursor();
             unset($sth);
+
+            return true;
 
         }
 
