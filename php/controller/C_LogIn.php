@@ -15,31 +15,14 @@
         header("Location: http://$host/CZN/logowanie_rejestracja.php");
 
     }
-  
 
-    try{
 
-        $user = new M_LogIn();
-        $user->logIn($email, $password);
+    $user = new M_LogIn();
+    $user->logIn($email, $password);
 
-        session_start();
-        $handle = new SessionUser($user);
-        $handle->create();
-        header("Location: http://$host/CZN/");
-        
-    }catch(NullAccountException $e){
-
-        $errorInfo = new SessionNotifications('alert', 'Próba nie udana', $e->getMessage());
-        $errorInfo->create();
-        header("Location: http://$host/CZN/logowanie_rejestracja.php");
-
-    }catch(ValidateDataUserException $r){
-
-        $errorInfo = new SessionNotifications('info', 'Zweryfikuj swoje konto', $r->getMessage());
-        $errorInfo->create();
-        header("Location: http://$host/CZN/logowanie_rejestracja.php");
-
-    }
-
+    session_start();
+    $handle = new SessionUser($user);
+    $handle->create();
+    header("Location: http://$host/CZN/");
 
 ?>
