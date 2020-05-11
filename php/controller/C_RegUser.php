@@ -28,7 +28,11 @@
 
 
     $user = new M_RegUser();
-    $user->registerNewUser($data);
+    if($user->registerNewUser($data)){
+        
+        //TODO wysylanie emaila
+
+    }
 
     header("Location: http://$host/CZN/logowanie_rejestracja.php"); 
 
