@@ -87,9 +87,7 @@
             unset($sth);
         }
 
-        public function registerNewUser(array $dataUser){
-
-            $host  = $_SERVER['HTTP_HOST']; 
+        public function registerNewUser(array $dataUser):bool{
 
             try{
 
@@ -97,20 +95,22 @@
                 $this->regNow($dataUser);
                 $successInfo = new SessionNotifications('success', 'Udało się!', 'Twoje konto zostało utworzone! Musisz jeszcze zweryfkować swoje konto. Sprawdź swoją pocztę');
                 $successInfo->create();                
+                return true;
 
             }catch(ValidateDataUserException $e){
         
                 $errorInfo = new SessionNotifications('error', 'Ugh... coś jest nie tak', $e->getMessage());
                 $errorInfo->create();
-                header("Location: http://$host/CZN/logowanie_rejestracja.php");            
+                return false;            
                 
             }catch(TakenAccountException $r){
             
                 $errorInfo = new SessionNotifications('alert', 'Niestety, ale ktoś Cię uprzedził :(', $r->getMessage());
                 $errorInfo->create();
-                header("Location: http://$host/CZN/logowanie_rejestracja.php");            
+                return false;           
                 
             }
+        
 
         }
         
