@@ -1,8 +1,10 @@
 <?php
 
+    require_once(dirname(__DIR__).'/core/ConnectDatabase.php'); 
+
     abstract class ManagementUser{
 
-        private $pdo;
+        protected $pdo;
         protected $id;
         protected $nick;
         protected $email;
@@ -13,11 +15,23 @@
         protected $acc_creation_date;
         protected $date_lock;
         protected $token;
+        protected $isValidate;
 
-        public function __construct(ConnectDatabase $_pdo, string $_email){
+        public function __construct(){
 
-            $this->email = htmlspecialchars($_email);
-            $this->pdo = $_pdo;
+            try{
+
+                $tmp = new ConnectDatabase();
+                $tmp->connect();
+                $this->pdo = $tmp;
+    
+            }catch(PDOException $e){
+    
+                $errorInfo = new SessionNotifications('error', 'Błąd krytyczny',"Nie udało połączyć się z bazą danych.");
+                $errorInfo->create();            
+                header("Location: http://$host/CZN");
+                
+            }
 
         }
         
@@ -34,6 +48,7 @@
             $this->acc_creation_date = null;
             $this->date_lock = null;
             $this->token = null;
+            $this->isValidate = null;
             
         }
 
@@ -73,14 +88,20 @@
             return $this->token;
         }
 
-        public function loadData(){
+        public function getValidate():string{
+            return $this->isValidate;
+        }
+
+        public function loadData(string $email):bool{
 
             $sthPDO = $this->pdo->getPDO();
             $sth = $sthPDO->prepare("SELECT * FROM users_account WHERE email = :email");
-            $sth->bindValue(':email', $this->email, PDO::PARAM_STR);
+            $sth->bindValue(':email', $email, PDO::PARAM_STR);
             $sth->execute();
 
             $result = $sth->fetch();
+            if($result == false)
+                return false;
 
             $this->id = $result['id_user'];
             $this->nick = $result['nick'];
@@ -90,6 +111,7 @@
             $this->isAccess = (int)$result['isAccess'];          
             $this->acc_creation_date = date('Y-m-d', strtotime($result['acc_creation_date']));
             $this->token = $result['token'];
+            $this->isValidate = $result['is_validate'];
 
             if(!isset($result['date_Lock']))
                 $this->date_lock = '';
@@ -98,6 +120,8 @@
 
             $sth->closeCursor();
             unset($sth);
+
+            return true;
 
         }
 
