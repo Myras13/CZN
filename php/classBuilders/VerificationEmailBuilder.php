@@ -4,28 +4,12 @@
 
     class VerificationEmailBuilder extends ManagementEmail{
 
-        public function setHeader(string $header){
-            $this->header = $header;
-        }
+        public function setMessage(array $data){
 
-        public function setReceiver(string $email){
-            $this->receiver = $email;       
-        }
-
-        public function setSubject(string $email){
-            $this->subject = $email;
-        }
-
-        public function setMessage(string $message){
-            $this->message = $message;
-        }
-
-        public function send():bool{
-
-            if (mail($this->receiver, $this->subject, $this->message, $this->header))
-                return true;
-            else
-                return false;
+            $text = 'Dziękujemy za rejestracje na stronie CZN.';
+            $text .= 'Tutaj masz link weryfikacyjny, który pozwoli ci aktywować konto na naszej stronie:';
+            $text .= 'http://'.$data['server'].'/CZN/veracc.php?id='.$data['id'].' . Wystarczy na niego tylko kliknąć.';
+            $this->message = $text;
 
         }
 
