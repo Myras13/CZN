@@ -12,7 +12,7 @@
                 <li><a href="#">Wege</a></li>
             </ul>
         </li>
-        <li><a href="#">O nas</a></li>
+        <li><a href="o_nas.php">O nas</a></li>
         <li><a href="#">Konto</a>
             <ul>
                 <li><a href="logowanie_rejestracja.php">Zaloguj się / Zarejestruj</a></li>

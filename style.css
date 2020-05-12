@@ -3,6 +3,7 @@ body
     background-color: rgb(169, 218, 129);
     margin: 0px;
     padding: 0px;
+    font-family: 'Roboto', sans-serif;
 }
 
 #container
@@ -76,8 +77,9 @@ body
 #content_index
 {
     margin-top: 20px;
-    padding: 40px;
+    padding: 20px 60px;
     text-align: justify;
+    font-size: 20px;
 }
 
 #content_logowanie_rejestracja
@@ -141,6 +143,7 @@ body
 .name
 {
     font-size: 30px;
+    font-weight: 700;
 }
 
 #content_account
