@@ -7,10 +7,12 @@
 
         private $builder;
         private $user;
+        private $server;
 
         public function __construct(object $builder){
 
             $this->builder = $builder;
+            $this->server =  $_SERVER['HTTP_HOST'];
 
         }
 
@@ -24,24 +26,17 @@
             if($this->builder instanceof VerificationEmailBuilder){
                 if($this->user == null)
                     return false;
-                
-                $id = $this->user->getId();
-                $emailUser = $this->user->getEmail();
-                $nick = $this->user->getNick();
-                $server = $_SERVER['HTTP_HOST'];
 
-                $text = 'Dziękujemy za rejestracje na stronie CZN.';
-                $text .= 'Tutaj masz link weryfikacyjny, który pozwoli ci aktywować konto na naszej stronie:';
-                $text .= 'http://'.$server.'/CZN/veracc.php?id='.$id.' . Wystarczy na niego tylko kliknąć.';
-
+                $data['server'] = $this->server;
+                $data['id'] = $this->user->getId();
                 $header = "MIME-Version: 1.0" . "\r\n";
                 $header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
                 $header .= 'From: coszniczego.project@gmail.com' . "\r\n";
 
                 $this->builder->setHeader($header);
-                $this->builder->setReceiver($emailUser);
+                $this->builder->setReceiver($this->user->getEmail());
                 $this->builder->setSubject('Weryfikacja konta na stronie CZN');
-                $this->builder->setMessage($text);
+                $this->builder->setMessage($data);
 
             }
 
