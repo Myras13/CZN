@@ -93,6 +93,7 @@
 
                 $this->validate($dataUser);
                 $this->regNow($dataUser);
+                $this->loadData($dataUser['email']);
                 $successInfo = new SessionNotifications('success', 'Udało się!', 'Twoje konto zostało utworzone! Musisz jeszcze zweryfkować swoje konto. Sprawdź swoją pocztę');
                 $successInfo->create();                
                 return true;
