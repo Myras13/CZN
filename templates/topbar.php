@@ -1,9 +1,31 @@
 <div id="topbar">
-    <a href="index.php"><div class="option">Strona główna</div></a>
-    <div class="option">Baza przepisów</div>
-    <div class="option">O nas</div>
-    <div class="option">Pasek wyszukiwania</div>
-    <?php
+    <ol>
+        <li><a href="index.php">Strona główna</a></li>
+        <li><a href="#">Przepisy</a>
+            <ul>
+                <li><a href="#">Dania główne</a></li>
+                <li><a href="#">Zupy</a></li>
+                <li><a href="#">Desery i ciasta</a></li>
+                <li><a href="#">Pieczywa</a></li>
+                <li><a href="#">Lody</a></li>
+                <li><a href="#">Napoje</a></li>
+                <li><a href="#">Wege</a></li>
+            </ul>
+        </li>
+        <li><a href="#">O nas</a></li>
+        <li><a href="#">Konto</a>
+            <ul>
+                <li><a href="logowanie_rejestracja.php">Zaloguj się / Zarejestruj</a></li>
+                <li><a href="#">Wyloguj</a></li>
+                <li><a href="account.php">Zmień dane</a></li>
+            </ul>
+        </li>  
+    </ol>
+
+
+<!--fajnie by było jakby opcja 'wyloguj' była dostępna tylko w momencie jak jesteś zalogowany-->
+
+    <!--    <?php
 
         if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION["LogInActive"])){
             echo "<a href='account.php'><div class='option'>Moje Konto</div></a>";   
@@ -17,7 +39,5 @@
         }
         
 
-    ?>
-    
-    <div style="clear: both;"></div>
+    ?>-->
 </div>
