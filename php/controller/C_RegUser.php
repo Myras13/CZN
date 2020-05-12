@@ -1,6 +1,8 @@
 <?php
 
-    require_once(dirname(__DIR__).'/model/M_RegUser.php');  
+    require_once(dirname(__DIR__).'/model/M_RegUser.php'); 
+    require_once(dirname(__DIR__).'/classDirector/DirectorEmail.php'); 
+    require_once(dirname(__DIR__).'/classBuilders/VerificationEmailBuilder.php');
     require_once(dirname(__DIR__).'/class/SessionNotifications.php');
 
     $data['nick'] = (isset($_POST['registration_username']) && $_POST['registration_username'] != '') ? htmlspecialchars($_POST['registration_username']) : null;
@@ -18,8 +20,8 @@
     foreach ($data as &$value) {
         if($value == null){
            
-            $errorInfo = new SessionNotifications('alert', 'Nie udało się stworzyć konta', "Wypełnione pola nie przeszły poprawnie walidacji.");
-            $errorInfo->create();            
+            $alertInfo = new SessionNotifications('alert', 'Nie udało się stworzyć konta', "Wypełnione pola nie przeszły poprawnie walidacji.");
+            $alertInfo->create();            
             header("Location: http://$host/CZN/logowanie_rejestracja.php");
             return;
 
@@ -28,7 +30,21 @@
 
 
     $user = new M_RegUser();
-    $user->registerNewUser($data);
+    if($user->registerNewUser($data)){
+        
+        $sendEmail = new DirectorEmail(new VerificationEmailBuilder());
+        $sendEmail->setUser($user);
+
+        if($sendEmail->send()){
+            $alertInfo = new SessionNotifications('alert', 'Sprawdź swoją pocztę', "Konto zostało utworzone, ale nie jest jeszcze zweryfikowane. Kliknij w link aktwacyjny w wiadomości.");
+            $alertInfo->create(); 
+        }
+        else{
+            $errorInfo = new SessionNotifications('error', 'Konto zostało utworzone, ale...', "Link aktywacyjny nie został wysłany na twoją pocztę. Skontaktuj się z administratorem strony.");
+            $errorInfo->create();
+        }
+
+    }
 
     header("Location: http://$host/CZN/logowanie_rejestracja.php"); 
 
