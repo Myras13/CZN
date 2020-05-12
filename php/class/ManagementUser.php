@@ -105,6 +105,7 @@
 
             $this->id = $result['id_user'];
             $this->nick = $result['nick'];
+            $this->email = $result['email'];
             $this->age = (int)$result['age'];
             $this->describe = $result['describe_user'];
             $this->permission = (int)$result['permission'];
