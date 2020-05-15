@@ -18,6 +18,7 @@
                 session_start();
             
             $_SESSION["nick"] = $this->user->getNick();
+            $_SESSION["email"] = $this->user->getEmail();
             $_SESSION["isAccess"] = $this->user->getIsAccess();
             $_SESSION["token"] = $this->user->getToken();
             $_SESSION["LogInActive"] = 1;
