@@ -36,12 +36,6 @@
 
         }
 
-        public function setNick(string $nick){
-
-            $this->nick = $nick;
-
-        }
-
         public function send(){
             if($this->builder instanceof VerificationEmailBuilder){
                 if($this->user == null)
@@ -66,16 +60,16 @@
 
             elseif($this->builder instanceof FeedbackEmailBuilder){
                 
-                $userEmail = $this->data['email'];
-                $subject = $this->data['title'].' - '.$this->nick.' - '.$userEmail;            
+                $subject = $this->data['title'].' - '.$this->data['nick'];            
                 $webemail = $this->webemail;
 
                 $message['type'] = $this->data['message_type'];
                 $message['content'] = $this->data['message'];
+                $message['email'] = $this->data['email'];
 
                 $header = "MIME-Version: 1.0" . "\r\n";
                 $header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-                $header .= "From: ".$userEmail."" . "\r\n";
+                $header .= "From: ".$webemail."" . "\r\n";
 
                 $this->builder->setHeader($header);
                 $this->builder->setReceiver($webemail);
