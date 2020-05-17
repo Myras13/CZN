@@ -3,12 +3,24 @@
     require_once(dirname(__DIR__).'/classDirector/DirectorEmail.php'); 
     require_once(dirname(__DIR__).'/classBuilders/FeedbackEmailBuilder.php');
     require_once(dirname(__DIR__).'/class/SessionNotifications.php');
+    require_once(dirname(__DIR__).'/class/ValidateEmail.php');
+    require_once(dirname(__DIR__).'/model/M_FeedbackSQL.php');
 
-    $data['title'] = (isset($_POST['title']) && !empty($_POST['title'])) ? htmlspecialchars($_POST['title']) : null;
-    $data['email'] = (isset($_POST['email']) && !empty($_POST['email'])) ? htmlspecialchars($_POST['email']) : null;
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+
+    $data['title'] = (isset($_POST['title']) && !empty($_POST['title'])) ? htmlspecialchars($_POST['title']) : null;  
+
+    if(isset($_POST['email']) && !empty($_POST['email']))
+        $data['email'] = htmlspecialchars($_POST['email']);  
+    elseif(isset($_SESSION["email"]))
+        $data['email'] = $_SESSION["email"];
+    else
+        $data['email'] = null;
+
     $data['message_type'] = (isset($_POST['message_type']) && !empty($_POST['message_type'])) ? htmlspecialchars($_POST['message_type']) : null;
     $data['message'] = (isset($_POST['message']) && !empty($_POST['message']) ) ? htmlspecialchars($_POST['message']) : null;
-    $nick = (isset($_POST['nick']) && !empty($_POST['nick'])) ? htmlspecialchars($_POST['nick']) : 'Gość';
+    $data['nick'] = (isset($_POST['nick']) && !empty($_POST['nick'])) ? htmlspecialchars($_POST['nick']) : null;
     
     $host  = $_SERVER['HTTP_HOST'];
 
@@ -24,10 +36,13 @@
     }
 
     $sendEmail = new DirectorEmail(new FeedbackEmailBuilder());
-    $sendEmail->setNick($nick);
     $sendEmail->setArrayDataContact($data);
 
     if($sendEmail->send()){
+
+        $feedbackSQL = new M_FeedbackSQL();
+        $feedbackSQL->add($data);
+
         $successInfo = new SessionNotifications('success', 'Wiadomośc została wysłana', "Wiadomość została wysłana do nas. Proszę o cierpliwość. Ktoś skontaktuję się z Tobą. Obserwuj pocztę.");
         $successInfo->create(); 
     }
