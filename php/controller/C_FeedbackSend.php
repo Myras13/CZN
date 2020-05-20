@@ -3,6 +3,7 @@
     require_once(dirname(__DIR__).'/classDirector/DirectorEmail.php'); 
     require_once(dirname(__DIR__).'/classBuilders/FeedbackEmailBuilder.php');
     require_once(dirname(__DIR__).'/class/SessionNotifications.php');
+    require_once(dirname(__DIR__).'/class/QuerySQL.php');
     require_once(dirname(__DIR__).'/class/ValidateEmail.php');
     require_once(dirname(__DIR__).'/model/M_FeedbackSQL.php');
 
@@ -18,7 +19,7 @@
     else
         $data['email'] = null;
 
-    $data['message_type'] = (isset($_POST['message_type']) && !empty($_POST['message_type'])) ? htmlspecialchars($_POST['message_type']) : null;
+    $data['id_type'] = (isset($_POST['message_type']) && !empty($_POST['message_type'])) ? htmlspecialchars($_POST['message_type']) : null;
     $data['message'] = (isset($_POST['message']) && !empty($_POST['message']) ) ? htmlspecialchars($_POST['message']) : null;
     $data['nick'] = (isset($_POST['nick']) && !empty($_POST['nick'])) ? htmlspecialchars($_POST['nick']) : null;
     
@@ -34,6 +35,11 @@
 
         }
     }
+
+    $stmt = new QuerySQL();
+    $stmt = $stmt->getValueById($data['id_type'], 'type_feedback', 'title_message');
+    $data['message_type'] = $stmt[0]['title_message'];
+
 
     $sendEmail = new DirectorEmail(new FeedbackEmailBuilder());
     $sendEmail->setArrayDataContact($data);
