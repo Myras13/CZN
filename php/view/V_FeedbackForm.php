@@ -23,7 +23,7 @@
 
     <?php foreach($option as $element): ?>
 
-        <option value="<?php echo $element['title_message']?>" > <?php echo $element['title_message']?> </option>
+        <option value="<?php echo $element['id']?>" > <?php echo $element['title_message']?> </option>
 
     <?php endforeach; ?>
 
