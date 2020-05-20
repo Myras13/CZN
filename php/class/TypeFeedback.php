@@ -10,9 +10,7 @@
 
             try{
 
-                $tmp = new ConnectDatabase();
-                $tmp->connect();
-                $this->pdo = $tmp;
+                $this->pdo = new ConnectDatabase();
     
             }catch(PDOException $e){
     
