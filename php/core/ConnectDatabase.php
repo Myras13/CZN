@@ -4,11 +4,11 @@
 
         private $pdo;
 
-        public function connect(){
+        public function __construct(){
 
             try{
 
-                require_once(dirname(__DIR__).'/config/config_connect.php');
+                require(dirname(__DIR__).'/config/config_connect.php');
                 $this->pdo = new PDO('mysql:host='.$database['host'].';dbname='.$database['dbname'].'', $database['login'], $database['password']);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);              
 
@@ -23,13 +23,13 @@
 
         public function  __destruct(){
 
-            $this->disconnect();
+            $this->pdo = null;
 
         }
 
         public function disconnect(){
             
-            if($this instanceof Connect_Database) {
+            if($this instanceof ConnectDatabase) {
 
                 return null;
 
