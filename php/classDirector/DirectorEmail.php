@@ -78,7 +78,29 @@
 
             }
 
+            elseif($this->builder instanceof RecoveryPasswordEmailBuilder){               
+                if($this->user == null)
+                    return false;
 
+                $data['server'] = $this->server;
+                $data['id'] = $this->user->getId();
+                $data['token'] = $this->user->getToken();
+                $emailUser = $this->user->getEmail();
+                $webemail = $this->webemail;
+                $subject = 'Odzyskiwanie hasła na stronie CZN';
+
+                $header = "MIME-Version: 1.0" . "\r\n";
+                $header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                $header .= "From: ".$webemail."" . "\r\n";
+
+                $this->builder->setHeader($header);
+                $this->builder->setReceiver($emailUser);
+                $this->builder->setSubject($subject);
+                $this->builder->setMessage($data);
+
+            }
+
+            
             if($this->builder->send())
                 return true;
             else
