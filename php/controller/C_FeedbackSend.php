@@ -36,8 +36,8 @@
         }
     }
 
-    $stmt = new QuerySQL();
-    $stmt = $stmt->getValueById($data['id_type'], 'type_feedback', 'title_message');
+    $feedbackSQL = new M_FeedbackSQL();
+    $stmt = $feedbackSQL->getTitleMessage($data['id_type'], 'type_feedback', 'title_message');
     $data['message_type'] = $stmt[0]['title_message'];
 
 
@@ -45,10 +45,7 @@
     $sendEmail->setArrayDataContact($data);
 
     if($sendEmail->send()){
-
-        $feedbackSQL = new M_FeedbackSQL();
         $feedbackSQL->add($data);
-
         $successInfo = new SessionNotifications('success', 'Wiadomośc została wysłana', "Wiadomość została wysłana do nas. Proszę o cierpliwość. Ktoś skontaktuję się z Tobą. Obserwuj pocztę.");
         $successInfo->create(); 
     }
