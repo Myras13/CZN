@@ -1,16 +1,19 @@
 <?php
 
     require_once(dirname(__DIR__).'/core/ConnectDatabase.php'); 
+    require_once(dirname(__DIR__).'/class/QuerySQL.php');
 
     class M_FeedbackSQL{
 
         private $pdo;
+        private $qSQL;
 
         public function __construct(){
 
             try{
 
-                $this->pdo  = new ConnectDatabase();
+                $this->pdo = new ConnectDatabase();
+                $this->qSQL = new QuerySQL($this->pdo);
     
             }catch(PDOException $e){
     
@@ -27,6 +30,12 @@
             $this->pdo->disconnect();
             $this->user = null;
             
+        }
+
+        public function getTitleMessage(int $id, string $tableSQL, string $columnSQL = "*"){
+
+            return $this->qSQL->getValueById($id, $tableSQL, $columnSQL);
+
         }
 
         public function add(array $user):bool{
