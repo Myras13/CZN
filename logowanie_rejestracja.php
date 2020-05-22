@@ -25,19 +25,27 @@
                     <span class="name">Zaloguj się</span>
                     <form action="php/controller/C_LogIn.php" method="post">
                         <br/>
-                        <label for="login_e-mail">e-mail</label><br/>
+                        <label for="login_e-mail">E-mail</label><br/>
                         <input id="login_e-mail" name="login_e-mail" type="email" required/><br/><br/>
 
                         <label for="login_password">Hasło</label><br/>
                         <input id="login_password" name="login_password" type="password" required/><br/><br/>
 
-                        <input type="submit" value="Zaloguj się"/>
+                        <input type="submit" value="Zaloguj się"/> <span>Nie pamiętasz hasła: <a href="#">Kliknij tutaj</a></span>
                     </form>     
-                    <br/><br/>
+                    <!--PANEL ODZYSKIWANIA HASLA-->
+                    <div class="recover-password">
+                        <span class="name">Odzyskiwanie hasła</span>
+                        <form action="php/controller/C_RecoveryPassword.php" method="post">
+                            <br/>
+                            <label for="recovey-password-label-email">Podaj E-mail:</label><br/>
+                            <input id="recovey-password-input-email" name="email" type="email" required/><br/><br/>                        
+                            <input type="submit" value="Odzyskaj hasło"/>
+                        </form>     
+                        <br/><br/>
+                    </div>
                 </div>
-
-
-                    <!--PANEL REJESTRACJI-->
+                <!--PANEL REJESTRACJI-->
                 <div class="panel_logowania_rejestracji_konta">
                     <span class="name">Zarejestruj się</span>
                     <form action="php/controller/C_RegUser.php" method="post">
@@ -51,7 +59,7 @@
                         <label for="registration_password_repeat">Powtórz hasło</label><br/>
                         <input id="registration_password_repeat" name="registration_password_repeat" type="password" required/><br/><br/>
 
-                        <label for="registration_e-mail">e-mail</label><br/>
+                        <label for="registration_e-mail">E-mail</label><br/>
                         <input id="registration_e-mail" name="registration_e-mail" type="email" required/><br/><br/>
 
                         <label for="registration_date_of_birth">Data urodzenia</label><br/>
