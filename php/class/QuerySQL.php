@@ -2,19 +2,11 @@
 
     class QuerySQL{
 
-        public function __construct(){
+        private $pdo;
 
-            try{
+        public function __construct(ConnectDatabase $pdo){
 
-                $this->pdo = new ConnectDatabase();
-    
-            }catch(PDOException $e){
-    
-                $errorInfo = new SessionNotifications('error', 'Błąd krytyczny',"Nie udało połączyć się z bazą danych.");
-                $errorInfo->create();            
-                header("Location: http://$host/CZN");
-                
-            }
+            $this->pdo = $pdo;
 
         }
 
@@ -22,7 +14,7 @@
             $this->pdo->disconnect();
         }
 
-        public function getValueById(string $id, string $tableSQL, string $columnSQL = "*"){
+        public function getValueById(int $id, string $tableSQL, string $columnSQL = "*"){
 
             $sthPDO = $this->pdo->getPDO();
             $sth = $sthPDO->prepare("SELECT `$columnSQL` FROM `$tableSQL` WHERE id = :id");
