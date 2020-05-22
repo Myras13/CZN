@@ -5,7 +5,7 @@
 
 ?>
 <!-- Gdy sejsa użytkownika istnieje -->
-<?php if(isset($_SESSION["LogInActive"]) || $processStatus == 2): ?>
+<?php if(isset($_SESSION["LogInActive"]) || $processStatus == false): ?>
 
     <div class="statusInfo">
         <p>Konto zostało już wcześniej zweryfikowane.</p>
