@@ -1,6 +1,6 @@
 <?php
 
-    require_once(dirname(__DIR__).'/class/VerificationAccount.php');
+    require_once(dirname(__DIR__).'/model/M_ModifyAccount.php');
 
     $processStatus = 0;   
     $id = 0;
@@ -10,16 +10,11 @@
     
     $id = htmlspecialchars((int)$_GET['id']);
 
-    $account = new VerificationAccount($id);
+    $account = new M_ModifyAccount();
+    $account->loadData($id);
     
-    if($account->isVerify() == 0){
+    if($account->isVerify()){
 
-        return $processStatus;
-
-    }
-    elseif($account->isVerify() == 2){
-
-        $processStatus = 2;
         return $processStatus;
 
     }
