@@ -18,10 +18,21 @@
 
     }
 
+    $valEmail = new ValidateEmail();
+
+    if(!$valEmail->examine($email)){
+
+        $errorInfo = new SessionNotifications('alert', 'Nie poprawny e-mail', "To, co podałeś, nie jest adresem e-mail.");
+        $errorInfo->create();            
+        header("Location: http://$host/CZN/logowanie_rejestracja.php");
+        return;
+
+    }
+
     $user = new M_RecoveryPassword();
     if(!$user->loadData($email)){
 
-        $errorInfo = new SessionNotifications('alert', 'Bład weryfikacji emaila', "Podany przez Ciebie e-mail jest nie poprawny.");
+        $errorInfo = new SessionNotifications('alert', 'Bład weryfikacji emaila', "Podany przez Ciebie e-mail nie istnieje.");
         $errorInfo->create();            
         header("Location: http://$host/CZN/logowanie_rejestracja.php");
 
