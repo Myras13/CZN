@@ -279,3 +279,8 @@ ol > li > ul > li:hover > a
 @keyframes anim {
     to   { visibility: hidden; }
   }
+
+#recover-password {
+    padding: 10px;
+    height: 80px;
+}

@@ -31,10 +31,27 @@
                         <label for="login_password">Hasło</label><br/>
                         <input id="login_password" name="login_password" type="password" required/><br/><br/>
 
-                        <input type="submit" value="Zaloguj się"/> <span>Nie pamiętasz hasła: <a href="#">Kliknij tutaj</a></span>
-                    </form>     
+                        <input type="submit" value="Zaloguj się"/> 
+
+                        <br/><br/>
+                        <span>Nie pamiętasz hasła ? </span>
+                        <input type="button" name="zapomnialem" value="Przywróć hasło" onclick="showDiv()"/>
+                    </form>
+
+                    <script type="text/javascript"> 
+                        function showDiv() {
+                            var x = document.getElementById("recover-password");
+                                if (x.style.display === "none") {
+                                    x.style.display = "block";
+                                } 
+                                else {
+                                    x.style.display = "none";
+                                }
+                            }
+                    </script>
+
                     <!--PANEL ODZYSKIWANIA HASLA-->
-                    <div class="recover-password">
+                    <div id="recover-password" style="display:none;">
                         <span class="name">Odzyskiwanie hasła</span>
                         <form action="php/controller/C_RecoveryPassword.php" method="post">
                             <br/>
