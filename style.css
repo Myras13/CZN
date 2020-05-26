@@ -263,6 +263,19 @@ ol > li > ul > li:hover > a
     visibility: visible;
 }
 
+.info {
+    background-color: rgb(77, 179, 226);
+    position: absolute;
+    padding: 10px;
+    right: 0px;
+    top: 0px;
+    text-align: center;
+    font-size: 120%;
+    width: 100%;
+    animation: anim 0s 3s forwards;
+    visibility: visible;
+}
+
 @keyframes anim {
     to   { visibility: hidden; }
   }
