@@ -14,6 +14,7 @@
     
             }catch(PDOException $e){
     
+                $host = $_SERVER['HTTP_HOST'];
                 $errorInfo = new SessionNotifications('error', 'Błąd krytyczny',"Nie udało połączyć się z bazą danych.");
                 $errorInfo->create();            
                 header("Location: http://$host/CZN");
