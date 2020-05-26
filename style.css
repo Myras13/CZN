@@ -223,3 +223,46 @@ ol > li > ul > li:hover > a
 {
     color: white;
 }
+
+.success {
+    background-color: rgba(17, 250, 9, 0.7);
+    position: absolute;
+    padding: 10px;
+    right: 0px;
+    top: 0px;
+    text-align: center;
+    font-size: 120%;
+    width: 100%;
+    animation: anim 0s 3s forwards;
+    visibility: visible;
+}
+
+.alert {
+    background-color: rgba(252, 159, 54, 0.788);
+    position: absolute;
+    padding: 10px;
+    right: 0px;
+    top: 0px;
+    text-align: center;
+    font-size: 120%;
+    width: 100%;
+    animation: anim 0s 3s forwards;
+    visibility: visible;
+}
+
+.error {
+    background-color: rgba(255, 0, 0, 0.7);
+    position: absolute;
+    padding: 10px;
+    right: 0px;
+    top: 0px;
+    text-align: center;
+    font-size: 120%;
+    width: 100%;
+    animation: anim 0s 3s forwards;
+    visibility: visible;
+}
+
+@keyframes anim {
+    to   { visibility: hidden; }
+  }

@@ -46,7 +46,7 @@
 
     if($sendEmail->send()){
         $feedbackSQL->add($data);
-        $successInfo = new SessionNotifications('success', 'Wiadomośc została wysłana', "Wiadomość została wysłana do nas. Proszę o cierpliwość. Ktoś skontaktuję się z Tobą. Obserwuj pocztę.");
+        $successInfo = new SessionNotifications('success', 'Wiadomość została wysłana', "Wiadomość została wysłana do nas. Proszę o cierpliwość. Ktoś skontaktuję się z Tobą. Obserwuj pocztę.");
         $successInfo->create(); 
     }
     else{
