@@ -20,6 +20,7 @@
             <?php include("templates/topbar.php") ?>
 
             <div id="content_index">
+                <?php require_once('php/view/V_Pages.php');?>
             </div>
             <?php include("templates/footer.php") ?>
 
