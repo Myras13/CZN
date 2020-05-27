@@ -12,6 +12,7 @@ if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION["LogInActive"]))
         <li><a href="index.php">Strona główna</a></li>
         <li><a href="#">Przepisy</a>
             <ul>
+                <li><a href="listrecipe.php?page=1">Wszystkie</a></li>
                 <li><a href="#">Dania główne</a></li>
                 <li><a href="#">Zupy</a></li>
                 <li><a href="#">Desery i ciasta</a></li>
