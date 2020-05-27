@@ -4,24 +4,38 @@
 
     class M_PaginatorDraw extends M_PreparePaginator{
 
-        private $type;
-
-        public function __construct(string $typeRecipe ,int $limit){
+        public function __construct(int $limit){
 
             parent::__construct($limit);
-            $this->type = htmlspecialchars($typeRecipe);
 
         }
 
-        public function getData(){
+        public function getDataType(int $type){
 
             $sthPDO = $this->pdo->getPDO();
-            $sth = $sthPDO->prepare("SELECT R.title, R.content, R.photo_link FROM recipe R INNER JOIN type_recipe TR ON R.id_type = TR.id LIMIT :start :end");
-            $sth->bindValue(':start', $this->$from, PDO::PARAM_INT);
-            $sth->bindValue(':end', $this->$limit, PDO::PARAM_INT);
+            $sth = $sthPDO->prepare("SELECT R.id_recipe, R.title, R.content, R.photo_link, R.date, U.nick FROM recipe AS R INNER JOIN users_account AS U ON R.id_user = U.id_user WHERE R.id_type = :typeRecipe ORDER BY R.id_recipe DESC LIMIT ?, ?");
+            $sth->bindValue(':typeRecipe', $type, PDO::PARAM_INT);
+            $sth->bindValue(1, $this->$from, PDO::PARAM_INT);
+            $sth->bindValue(2, $this->$limit, PDO::PARAM_INT);
             $sth->execute();
 
-            $result = $sth->fetch();
+            $result = $sth->fetchAll();
+            if($result == false)
+                return false;
+            else
+                return $result;
+                
+        }
+
+        public function getDataAll(){
+
+            $sthPDO = $this->pdo->getPDO();
+            $sth = $sthPDO->prepare("SELECT R.id_recipe, R.title, R.content, R.photo_link, R.date, U.nick FROM recipe AS R INNER JOIN users_account AS U ON R.id_user = U.id_user ORDER BY R.id_recipe DESC LIMIT ?, ?");
+            $sth->bindValue(1, $this->from, PDO::PARAM_INT);
+            $sth->bindValue(2, $this->limit, PDO::PARAM_INT);
+            $sth->execute();
+
+            $result = $sth->fetchAll();
             if($result == false)
                 return false;
             else

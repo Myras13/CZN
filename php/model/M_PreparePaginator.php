@@ -5,7 +5,7 @@
     class M_PreparePaginator extends ManagementPage{
 
         protected $limit;
-        protected $allPages;
+        protected $countPages;
         protected $page;
         protected $from;
 
@@ -14,9 +14,7 @@
             parent::__construct();
             $this->limit = $limit;
 
-            setAllPages();
-
-            $this->from = $page * $limit;
+            $this->countAllPages();
         
         }
 
@@ -29,7 +27,7 @@
         public function setCurrentyPage(int $page){
 
             $this->page = $page;
-            setFrom($page);
+            $this->setFrom($page);
 
         }
 
@@ -40,16 +38,25 @@
 
         }
 
-        protected function setAllPages(){
+        protected function countAllPages(){
 
             $sthPDO = $this->pdo->getPDO();
             $sth = $sthPDO->query("SELECT COUNT(id_recipe) AS rec FROM recipe")->fetch()['rec'];  
-            $this->allPages = ceil($sth/$this->limit);  
+            $this->countPages = ceil($sth/$this->limit);  
 
         }
 
+        
+        protected function countTypePages(int $id){
 
+            $sthPDO = $this->pdo->getPDO();
+            $sth = $sthPDO->prepare("SELECT COUNT(id_recipe) AS rec FROM recipe WHERE id_type = :id");
+            $sth->bindValue(':id', $id, PDO::PARAM_INT);
+            $sth->execute();
 
+            $this->allPages = ceil($sth->fetch()['rec']/$this->limit);  
+
+        }
 
     }
 
