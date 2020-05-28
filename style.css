@@ -284,3 +284,70 @@ ol > li > ul > li:hover > a
     padding: 10px;
     height: 80px;
 }
+
+#content-recipe
+{
+    width: 1000px;
+}
+
+.box-recipe
+{
+    width: 1000px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.box-recipe-left
+{
+    float: left;
+    width: 300px;
+}
+
+.box-recipe a
+{
+    color: black;
+    text-decoration: none;
+}
+
+.box-recipe:hover
+{
+    background-color: #d2d0ce;
+}
+
+.box-recipe-right
+{
+    float: left;
+    width: 700px;
+}
+
+.title-recipe
+{
+    text-align: center;
+    height: 50px;
+    font-size: 20px;
+}
+
+.photo-recipe
+{
+    text-align: center;
+}
+
+.content-recipe1
+{
+    text-align: justify;
+    padding-top: 30px;
+    padding-right: 50px;
+    height: 180px;
+}
+
+.user-recipe
+{
+    float: left;
+    width: 350px;
+}
+
+.date-recipe
+{
+    float: left;
+    width: 350px;
+}

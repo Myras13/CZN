@@ -19,7 +19,7 @@
             <?php include("templates/logo.php") ?>
             <?php include("templates/topbar.php") ?>
 
-            <div id="content_index">
+            <div id="content-recipe">
                 <?php require_once('php/view/V_Pages.php');?>
             </div>
             <?php include("templates/footer.php") ?>
