@@ -12,14 +12,7 @@ if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION["LogInActive"]))
         <li><a href="index.php">Strona główna</a></li>
         <li><a href="#">Przepisy</a>
             <ul>
-                <li><a href="listrecipe.php?page=1">Wszystkie</a></li>
-                <li><a href="#">Dania główne</a></li>
-                <li><a href="#">Zupy</a></li>
-                <li><a href="#">Desery i ciasta</a></li>
-                <li><a href="#">Pieczywa</a></li>
-                <li><a href="#">Lody</a></li>
-                <li><a href="#">Napoje</a></li>
-                <li><a href="#">Wege</a></li>
+                <?php require_once(dirname(__DIR__).'/php/view/V_ShowTypeRecipe.php'); ?>
             </ul>
         </li>
         <li><a href="o_nas.php">O nas</a></li>
