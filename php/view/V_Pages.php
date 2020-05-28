@@ -1,11 +1,17 @@
 <?php
 
-    require_once(dirname(__DIR__).'/controller/C_AllPages.php');
+    require_once(dirname(__DIR__).'/controller/C_Pages.php');
+    require_once(dirname(__DIR__).'/function/isVarBetween.php');
+
     $host  = $_SERVER['HTTP_HOST'];
-     
-    if(!isset($_GET['type'])):
-        $max = sizeof($data);
-        for ($i = 0; $i < $max; $i++):
+    
+    if($data == false){
+        header("Location: http://$host/CZN/recipe.php");
+        return;
+    }
+
+    $max = sizeof($data);
+    for ($i = 0; $i < $max; $i++):
 ?>
 
         <div class="box-recipe">
@@ -25,9 +31,62 @@
                 <div class='user-recipe'>
                     <p><?php echo $data[$i]['nick']?></p>
                 </div>
+            </a>
         </div>
 
 <?php
         endfor;
+?>
+
+
+<!-- Stronicowanie -->
+<?php   
+
+    if($paginator['page'] > 4): 
+        $linkWeb = "http://$host/CZN/recipe.php";
+
+        if(isset($_GET['category']))
+            $linkWeb = $linkWeb."?category=".$_GET['category']."&page=1";
+        else
+            $linkWeb = $linkWeb."?page=1";
+?>
+    <!-- Trzeba wystylizować -->
+    <a href=<?php echo $linkWeb ?> > << Pierwsza strona </a>
+
+<?php
+
+    endif;
+    for($i = 1; $i <= $paginator['allPages']; $i++):
+
+        $linkWeb = "http://$host/CZN/recipe.php";
+
+        if(isset($_GET['category']))
+            $linkWeb = $linkWeb."?category=".$_GET['category']."&page=";
+        else
+            $linkWeb = $linkWeb."?page=";
+
+        if(isVarBetween($i, ($paginator['page'] - 3), ($paginator['page'] + 5))):
+?>
+            
+            <!-- Trzeba wystylizować -->
+            <a class="paginator" href=<?php echo $linkWeb.$i; ?>> <?php echo $i; ?> </a> |
+
+<?php
+        endif;
+    endfor;
+
+    if($paginator['page'] < ($paginator['allPages'] -1)):
+        $linkWeb = "http://$host/CZN/recipe.php";
+
+        if(isset($_GET['category']))
+            $linkWeb = $linkWeb."?category=".$_GET['category']."&page=".$paginator['allPages']."";
+        else
+            $linkWeb = $linkWeb."?page=".$paginator['allPages']."";
+?>
+
+    <!-- Trzeba wystylizować -->
+    <a href=<?php echo $linkWeb ?> > Ostatnia strona >> </a>
+
+<?php
     endif;
 ?>

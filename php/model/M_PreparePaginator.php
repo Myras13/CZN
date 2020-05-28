@@ -13,7 +13,6 @@
 
             parent::__construct();
             $this->limit = $limit;
-
             $this->countAllPages();
         
         }
@@ -22,6 +21,18 @@
 
             $this->pdo->disconnect();
             
+        }
+
+        public function getPage():int{
+
+            return $this->page;
+
+        }
+
+        public function getAllPages():int{
+
+            return $this->countPages;
+
         }
 
         public function setCurrentyPage(int $page){
@@ -38,7 +49,7 @@
 
         }
 
-        protected function countAllPages(){
+        public function countAllPages(){
 
             $sthPDO = $this->pdo->getPDO();
             $sth = $sthPDO->query("SELECT COUNT(id_recipe) AS rec FROM recipe")->fetch()['rec'];  
@@ -47,14 +58,14 @@
         }
 
         
-        protected function countTypePages(int $id){
+        public function countTypePages(int $id){
 
             $sthPDO = $this->pdo->getPDO();
             $sth = $sthPDO->prepare("SELECT COUNT(id_recipe) AS rec FROM recipe WHERE id_type = :id");
             $sth->bindValue(':id', $id, PDO::PARAM_INT);
             $sth->execute();
 
-            $this->allPages = ceil($sth->fetch()['rec']/$this->limit);  
+            $this->countPages = ceil($sth->fetch()['rec']/$this->limit);  
 
         }
 
