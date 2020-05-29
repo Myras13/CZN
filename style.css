@@ -233,8 +233,8 @@ ol > li > ul > li:hover > a
     text-align: center;
     font-size: 120%;
     width: 100%;
-    animation: anim 0s 3s forwards;
-    visibility: visible;
+
+    display: block;
 }
 
 .alert {
@@ -246,8 +246,6 @@ ol > li > ul > li:hover > a
     text-align: center;
     font-size: 120%;
     width: 100%;
-    animation: anim 0s 3s forwards;
-    visibility: visible;
 }
 
 .error {
@@ -259,8 +257,6 @@ ol > li > ul > li:hover > a
     text-align: center;
     font-size: 120%;
     width: 100%;
-    animation: anim 0s 3s forwards;
-    visibility: visible;
 }
 
 .info {
@@ -272,13 +268,18 @@ ol > li > ul > li:hover > a
     text-align: center;
     font-size: 120%;
     width: 100%;
-    animation: anim 0s 3s forwards;
-    visibility: visible;
 }
 
-@keyframes anim {
-    to   { visibility: hidden; }
-  }
+input[name=close]{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    right: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: inherit;
+    font-size: 25px;
+}
 
 #recover-password {
     padding: 10px;
