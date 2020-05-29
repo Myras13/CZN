@@ -11,7 +11,7 @@
     $id = htmlspecialchars((int)$_GET['id']);
 
     $account = new M_ModifyAccount();
-    $account->loadData($id);
+    $account->loadDataUser($id);
     
     if($account->isVerify()){
 
