@@ -50,7 +50,7 @@
 
         public function isVerify():bool{
 
-            if($this->is_validate)
+            if($this->isValidate)
                 return true;
             else
                 return false;
