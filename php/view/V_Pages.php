@@ -14,25 +14,40 @@
     for ($i = 0; $i < $max; $i++):
 ?>
 
+        
         <div class="box-recipe">
             <a href=<?php echo 'http://'.$host.'/CZN/recipe.php?id='.$data[$i]['id_recipe'].''?>>
-                <div class="photo">
-                    <img src=<?php echo $data[$i]['photo_link']; ?> alt="Tu powinno byc zdjęcia, ale nie ma..." width="300" height="300">
-                </div>
+            
+
+            <div class="box-recipe-left">
                 <div class="title-recipe">
                     <span><?php echo $data[$i]['title']; ?></span>
                 </div>
-                <div class='content-recipe'>
+
+                <div class="photo-recipe">
+                    <img src=<?php echo $data[$i]['photo_link']; ?> alt="Tu powinno byc zdjęcia, ale nie ma..." width="200" height="200">
+                </div>
+            </div>
+
+            <div class="box-recipe=right">
+                <div class='content-recipe1'>
                     <p><?php echo $data[$i]['content']?></p>
                 </div>
-                <div class='date-recipe'>
-                    <p><?php echo $data[$i]['date']?></p>
-                </div>
+
                 <div class='user-recipe'>
-                    <p><?php echo $data[$i]['nick']?></p>
+                    <p>Dodano przez: <?php echo $data[$i]['nick']?></p>
                 </div>
-            </a>
+
+                <div class='date-recipe'>
+                    <p>Data dodania: <?php echo $data[$i]['date']?></p>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+
+        </a>
         </div>
+        
 
 <?php
         endfor;
