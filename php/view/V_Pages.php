@@ -5,7 +5,12 @@
 
     $host  = $_SERVER['HTTP_HOST'];
     
+    if(isset($_GET['id']))
+        return;
+
     if($data == false){
+        $alertInfo = new SessionNotifications('alert', 'Brak wyników',"Dotarłeś do miejsca, gdzie diabeł mówi dobranoc.");
+        $alertInfo->create();            
         header("Location: http://$host/CZN/recipe.php");
         return;
     }
@@ -13,7 +18,6 @@
     $max = sizeof($data);
     for ($i = 0; $i < $max; $i++):
 ?>
-
         
         <div class="box-recipe">
             <a href=<?php echo 'http://'.$host.'/CZN/recipe.php?id='.$data[$i]['id_recipe'].''?>>
