@@ -5,7 +5,7 @@
     $limit = 10;
     $flagmode = false;
 
-    $page = (isset($_GET['page'])) ? intval($_GET['page'] - 1): 0;
+    $page = (isset($_GET['page'])) ? intval($_GET['page']) - 1: 0;
     $page = ($page >= 0) ? $page: 0;
 
     $paginator['page'] = 0;
