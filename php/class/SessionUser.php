@@ -17,6 +17,7 @@
             if (session_status() == PHP_SESSION_NONE)
                 session_start();
             
+            $_SESSION["id"] = $this->user->getId();
             $_SESSION["nick"] = $this->user->getNick();
             $_SESSION["email"] = $this->user->getEmail();
             $_SESSION["isAccess"] = $this->user->getIsAccess();
