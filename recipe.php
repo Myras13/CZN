@@ -3,7 +3,7 @@
     if (session_status() == PHP_SESSION_NONE)
         session_start();
  
-    if(!isset($_GET['delete']))
+    if(!isset($_GET['delete']) && !isset($_GET['id']))
         $_SESSION['backroute'] = $_SERVER['REQUEST_URI'];
 
 ?>
