@@ -15,7 +15,8 @@
             $sthPDO = $this->pdo->getPDO();
 
             $sql = "            
-                SELECT 
+                SELECT
+                    R.id_recipe AS id,
                     R.title AS title,
                     R.content AS content,
                     R.photo_link AS photo_link,
