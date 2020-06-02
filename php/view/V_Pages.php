@@ -1,10 +1,14 @@
 <?php
 
     require_once(dirname(__DIR__).'/controller/C_Pages.php');
+    require_once(dirname(__DIR__).'/controller/C_DeletePage.php');
     require_once(dirname(__DIR__).'/function/isVarBetween.php');
 
     $host  = $_SERVER['HTTP_HOST'];
-    
+
+    if(isset($_GET['delete']))
+        return;
+
     if(isset($_GET['id']))
         return;
 
@@ -48,8 +52,20 @@
                 <div style="clear: both;"></div>
             </div>
             <div style="clear: both;"></div>
+            </a>
 
-        </a>
+            <?php if(isset($_SESSION['nick']) && $data[$i]['nick'] == $_SESSION['nick']):
+            ?>
+                <!-- CSS is Awesome -->
+                <!-- JS musi zapytać, czy napewno użytkownik chce usunac przepis -->
+                <div class="user-modify-recipe">
+                    <a href="#">Edytuj</a>
+                    <a href=<?php echo 'http://'.$host.'/CZN/recipe.php?delete='.$data[$i]['id_recipe'].''?>>Usuń</a>
+                </div>
+
+            <?php endif;
+            ?>
+
         </div>
         
 

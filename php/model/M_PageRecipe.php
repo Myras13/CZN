@@ -1,6 +1,6 @@
 <?php
 
-    require_once(dirname(__DIR__).'/class/ManagementPage.php'); 
+    require_once(dirname(__DIR__).'/class/ManagementPage.php');
 
     class M_PageRecipe extends ManagementPage{
 
@@ -71,6 +71,28 @@
                 return false;
             else
                 return $result;
+
+        }
+
+        public function delete(int $idRecipe, int $idUser){
+
+            $sthPDO = $this->pdo->getPDO();
+            $sql = "SELECT COUNT(R.id_recipe) AS is_owner FROM recipe R INNER JOIN users_account U ON U.id_user = R.id_user WHERE R.id_user = :idUser AND R.id_recipe = :idRecipe";
+            $owner = $sthPDO->prepare($sql);
+            $owner->bindValue(':idUser', $idUser, PDO::PARAM_INT);
+            $owner->bindValue(':idRecipe', $idRecipe, PDO::PARAM_INT);
+            $owner->execute();
+
+            $result = $owner->fetch();
+            if($result['is_owner'] == false)
+                return false;
+            
+            $sql = "DELETE FROM recipe WHERE id_recipe = :idRecipe";
+            $sth = $sthPDO->prepare($sql);
+            $sth->bindValue(':idRecipe', $idRecipe, PDO::PARAM_INT);
+            $result = $sth->execute();
+
+            return true;
 
         }
 
