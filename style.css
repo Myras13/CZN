@@ -387,10 +387,6 @@ input[name=close]{
     background-color: white;
 }
 
-.paginator:active {
-    background-color: rgb(169, 218, 129);
-}
-
 .present {
     background-color: #707070;
     color: white;
