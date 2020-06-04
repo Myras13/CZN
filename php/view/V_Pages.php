@@ -56,11 +56,10 @@
 
             <?php if(isset($_SESSION['nick']) && $data[$i]['nick'] == $_SESSION['nick']):
             ?>
-                <!-- CSS is Awesome -->
-                <!-- JS musi zapytać, czy napewno użytkownik chce usunac przepis -->
+
                 <div class="user-modify-recipe">
                     <a href="#">Edytuj</a>
-                    <a href=<?php echo 'http://'.$host.'/CZN/recipe.php?delete='.$data[$i]['id_recipe'].''?>>Usuń</a>
+                    <a href=<?php echo 'http://'.$host.'/CZN/recipe.php?delete='.$data[$i]['id_recipe'].''?> onclick="return confirm('Czy na pewno chcesz usunąć przepis ?');">Usuń</a>
                 </div>
 
             <?php endif;
@@ -75,8 +74,8 @@
 
 
 <!-- Stronicowanie -->
+<div class="pagination">
 <?php   
-
     if($paginator['page'] > 4): 
         $linkWeb = "http://$host/CZN/recipe.php";
 
@@ -85,8 +84,7 @@
         else
             $linkWeb = $linkWeb."?page=1";
 ?>
-    <!-- Trzeba wystylizować -->
-    <a href=<?php echo $linkWeb ?> > << Pierwsza strona </a>
+    <a href=<?php echo $linkWeb ?> class="paginator"> << Pierwsza strona </a>
 
 <?php
 
@@ -103,8 +101,7 @@
         if(isVarBetween($i, ($paginator['page'] - 3), ($paginator['page'] + 5))):
 ?>
             
-            <!-- Trzeba wystylizować -->
-            <a class="paginator" href=<?php echo $linkWeb.$i; ?>> <?php echo $i; ?> </a> |
+            <a class="paginator" href=<?php echo $linkWeb.$i; ?>> <?php echo $i; ?> </a>
 
 <?php
         endif;
@@ -119,9 +116,8 @@
             $linkWeb = $linkWeb."?page=".$paginator['allPages']."";
 ?>
 
-    <!-- Trzeba wystylizować -->
-    <a href=<?php echo $linkWeb ?> > Ostatnia strona >> </a>
-
+    <a href=<?php echo $linkWeb ?> class="paginator">Ostatnia strona >></a>
+    </div>
 <?php
     endif;
 ?>

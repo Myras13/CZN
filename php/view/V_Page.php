@@ -56,11 +56,10 @@
 
         <?php if(isset($_SESSION['nick']) && $dataRecipe['nick'] == $_SESSION['nick']):
         ?>
-            <!-- CSS is Awesome -->
-            <!-- JS musi zapytać, czy napewno użytkownik chce usunac przepis -->
+
             <div class="user-modify-recipe">
                 <a href="#">Edytuj</a>
-                <a href=<?php echo 'http://'.$host.'/CZN/recipe.php?delete='.$dataRecipe['id'].''?>>Usuń</a>
+                <a href="<?php echo 'http://'.$host.'/CZN/recipe.php?delete='.$dataRecipe['id'].''?>" onclick="return confirm('Czy na pewno chcesz usunąć przepis ?');">Usuń</a>
             </div>
 
         <?php endif;

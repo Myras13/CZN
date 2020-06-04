@@ -352,3 +352,38 @@ input[name=close]{
     float: left;
     width: 350px;
 }
+
+.user-modify-recipe {
+    position: relative;
+    left: 65px;
+}
+
+.user-modify-recipe > a {
+    background-color: #bdbdbd;
+    color: black;
+    padding: 6px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+.pagination {
+    position: relative;
+    left: 35px;
+}
+
+.paginator {
+    display: inline-block;
+    margin-left: 5px;
+    color: black;
+    padding: 6px 10px;
+    text-decoration: none;
+    background-color: #bdbdbd;
+    border-radius: 5px;
+}
+
+.paginator:hover, .active {
+    background-color: white;
+}
