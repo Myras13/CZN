@@ -98,10 +98,12 @@
         else
             $linkWeb = $linkWeb."?page=";
 
-        if(isVarBetween($i, ($paginator['page'] - 3), ($paginator['page'] + 5))):
+            $style = ($i == ($paginator['page'] + 1))? "present":"";
+
+            if(isVarBetween($i, ($paginator['page'] - 3), ($paginator['page'] + 5))):
 ?>
-            
-            <a class="paginator" href=<?php echo $linkWeb.$i; ?>> <?php echo $i; ?> </a>
+
+        <a class="paginator <?php echo $style?>" href=<?php echo $linkWeb.$i; ?>> <?php echo $i; ?> </a>
 
 <?php
         endif;
