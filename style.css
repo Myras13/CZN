@@ -370,8 +370,7 @@ input[name=close]{
 }
 
 .pagination {
-    position: relative;
-    left: 35px;
+    text-align: center;
 }
 
 .paginator {
@@ -384,6 +383,15 @@ input[name=close]{
     border-radius: 5px;
 }
 
-.paginator:hover, .active {
+.paginator:hover {
     background-color: white;
+}
+
+.paginator:active {
+    background-color: rgb(169, 218, 129);
+}
+
+.present {
+    background-color: #707070;
+    color: white;
 }
