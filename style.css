@@ -80,6 +80,15 @@ body
     padding: 20px 60px;
     text-align: justify;
     font-size: 20px;
+    width: 600px;
+    float: left;
+}
+
+#find_by_ingredients
+{
+    float: left;
+    width: 200px;
+    padding-top: 50px;
 }
 
 #content_logowanie_rejestracja

@@ -39,6 +39,16 @@
                 </p>
             </div>
 
+            <div id="find_by_ingredients">
+                <form>
+                    <br/>
+                    <label for="find_by_ingredients">Podaj składnik, która ma się znaleźć w Twojej potrawie:</label><br/>
+                    <input id="find_by_ingredients" name="find_by_ingredients" type="text" /><br/><br/>
+                </form>
+            </div>
+
+            <div style="clear: both;"></div>
+
             <?php include("templates/footer.php") ?>
 
         </div>
