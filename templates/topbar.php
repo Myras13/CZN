@@ -24,6 +24,8 @@ if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION["LogInActive"]))
                 <?php else:?>
                     <li><a href='logowanie_rejestracja.php'>Zaloguj się / Zarejestruj</a></li>
                 <?php endif;?>
+
+                <li><a href='add_recipe.php'>Dodaj przepis</a></li> <!-- Tutaj Michał trzeba coś z tym zrobić. Dodać jakiegoś PHP czy coś -->
             </ul>
         </li>  
     </ol>

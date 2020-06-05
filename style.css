@@ -400,3 +400,8 @@ input[name=close]{
     background-color: #707070;
     color: white;
 }
+
+#content_add_recipe
+{
+    padding: 60px;
+}
