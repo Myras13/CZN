@@ -41,9 +41,17 @@
 
             <div id="find_by_ingredients">
                 <form>
-                    <br/>
-                    <label for="find_by_ingredients">Podaj składnik, która ma się znaleźć w Twojej potrawie:</label><br/>
-                    <input id="find_by_ingredients" name="find_by_ingredients" type="text" /><br/><br/>
+                    <span class="ingredient_search">Wyszukiwanie po składnikach</span>
+                        </br>
+                    <label for="find_by_ingredients">Podaj składniki, które chcesz w swojej potrawie:</label><br/>
+                    <table id="ingredients">      
+                        <tr><td><input type="hidden" id="counter" value="1"></td></tr>
+                        <tr>
+                                <td><input type="text" id="components1" class="inputComponents"></td>
+                                <td><input type="button" class="addButton" id="button1" value="+" onclick="addField();"></td>
+                        </tr>
+                    </table>
+                    <input type="button" name="serach_by_ingredients" value="Szukaj"/>
                 </form>
             </div>
 

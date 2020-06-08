@@ -405,3 +405,23 @@ input[name=close]{
 {
     padding: 60px;
 }
+
+#find_by_ingredients {
+    width: 210px;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+}
+
+#ingredients {
+    display: inline-block;
+    margin-left: 16px;
+}
+
+.ingredient_search {
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
