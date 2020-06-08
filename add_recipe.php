@@ -46,35 +46,15 @@
                         </div>
                         <div style="clear:both;"></div>
                         <div style="text-align: center">
-                            <div style="width: 100%;">
-                                <input id="ingredient-1-1" name="ingredient-1-1" type="text"/>
-                                <input id="ingredient-1-2" name="ingredient-1-2" type="text" style="width: 10%;"/>
-                                <input id="ingredient-1-3" name="ingredient-1-3" type="text" style="width: 30%;"/>
-                            </div>
-                            <div style="width: 100%;">
-                                <!-- SKŁADNIK 2 -->
-                                <input id="ingredient-2-1" name="ingredient-2-1" type="text"/>
-                                <input id="ingredient-2-2" name="ingredient-2-2" type="text" style="width: 10%;"/>
-                                <input id="ingredient-2-3" name="ingredient-2-3" type="text" style="width: 30%;"/>
-                            </div>
-                            <div style="width: 100%;">
-                                <!-- SKŁADNIK 3 -->
-                                <input id="ingredient-3-1" name="ingredient-3-1" type="text"/>
-                                <input id="ingredient-3-2" name="ingredient-3-2" type="text" style="width: 10%;"/>
-                                <input id="ingredient-3-3" name="ingredient-3-3" type="text" style="width: 30%;"/>
-                            </div>
-                            <div style="width: 100%;">
-                                <!-- SKŁADNIK 4 -->
-                                <input id="ingredient-4-1" name="ingredient-4-1" type="text"/>
-                                <input id="ingredient-4-2" name="ingredient-4-2" type="text" style="width: 10%;"/>
-                                <input id="ingredient-4-3" name="ingredient-4-3" type="text" style="width: 30%;"/>                            
-                            </div>
-                            <div style="width: 100%; padding-left: 3.1%;">
-                                <input id="ingredient-5-1" name="ingredient-5-1" type="text"/>
-                                <input id="ingredient-5-2" name="ingredient-5-2" type="text" style="width: 10%;"/>
-                                <input id="ingredient-5-3" name="ingredient-5-3" type="text" style="width: 30%;"/>
-                                <button id="add">+</button>
-                            </div>
+                            <table id="add_ingredients">      
+                            <tr><td><input type="hidden" id="counter" value="1"></td></tr>
+                                <tr>
+                                    <td><input type="text" name="component-1" id="component" class="inputComponents"></td>
+                                    <td><input type="text" name="quantity-1" id="quantity" class="inputQuantity"></td>
+                                    <td><input type="text" name="measure-type-1" id="measure" class="inputMeasure"></td>
+                                    <td><input type="button" class="addButton" id="button1" value="+" onclick="addField_v2();"></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     <div style="clear:both;"></div>

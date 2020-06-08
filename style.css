@@ -425,3 +425,22 @@ input[name=close]{
     font-size: 21px;
     margin-bottom: 10px;
 }
+
+#add_ingredients {
+    display: inline-block;
+}
+
+#add_ingredients #component {
+    margin-left: 10px;
+    width: 150px;
+}
+
+#add_ingredients #quantity {
+    margin-left: 8px;
+    width: 50px;
+}
+
+#add_ingredients #measure {
+    margin-left: 15px;
+    width: 100px;
+}
