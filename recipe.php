@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <?php require_once('php/view/V_SessionNotifications.php');?>
+        
         <div id="container">
             
             <?php include("templates/logo.php") ?>
@@ -28,5 +28,8 @@
             <?php include("templates/footer.php") ?>
 
         </div>
+
+        <?php require_once('php/view/V_SessionNotifications.php');?>
+
     </body>
 </html>
