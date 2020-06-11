@@ -23,13 +23,17 @@
                 <span class="name">Dodaj przepis</span>
                 <br/>
                 
-                <form>
+                <form action="php/controller/C_AddRecipe.php" method="POST">
                     <div style="width: 48%; float: left;">
                         <label for="name_of_recipe">Nazwa potrawy</label><br/>
                         <input id="name_of_recipe" name="name_of_recipe" type="text"/><br/><br/>
 
                         <label for="preparation">Przygotowanie</label><br/>
-                        <textarea cols="50" rows="10"></textarea><br/><br/>
+                        <textarea name="text_of_recipe" cols="50" rows="10"></textarea><br/><br/>
+
+                        <label for="preparation">Rodzaj przepisu</label><br/>
+                        <?php require_once('php/view/V_TypeRecipeInAdd.php');?>
+
                     </div>
                     <div style="width: 52%; float: left; text-align: center">  
                         <h2>Składniki</h2>
@@ -51,7 +55,7 @@
                                 <tr>
                                     <td><input type="text" name="component-1" id="component" class="inputComponents"></td>
                                     <td><input type="text" name="quantity-1" id="quantity" class="inputQuantity"></td>
-                                    <td><input type="text" name="measure-type-1" id="measure" class="inputMeasure"></td>
+                                    <td><input type="text" name="measure-1" id="measure" class="inputMeasure"></td>
                                     <td><input type="button" class="addButton" id="button1" value="+" onclick="addField_v2();"></td>
                                 </tr>
                             </table>
