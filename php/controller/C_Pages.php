@@ -35,8 +35,8 @@
         $data = $allPages->getDataAll();
     }
 
-    if($flagmode == true)
+    if($flagmode == true && $data != false){
         foreach ($data as &$value)
-            $value['content'] = substr($value['content'], 0, 300).'...';
-
+            $value['content'] = substr($value['content'], 0, 300).'...'; 
+    }
 ?>
