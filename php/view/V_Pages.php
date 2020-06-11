@@ -12,13 +12,18 @@
     if(isset($_GET['id']))
         return;
 
-    if($data == false){
+    if($data == false):
         $alertInfo = new SessionNotifications('alert', 'Brak wyników',"Dotarłeś do miejsca, gdzie diabeł mówi dobranoc.");
-        $alertInfo->create();            
-        header("Location: http://$host/CZN/recipe.php");
-        return;
-    }
+        $alertInfo->create();
+?>
 
+    <h2>Ależ wieje...</h2>
+
+<?php
+        return;
+    endif;
+?>
+<?php
     $max = sizeof($data);
     for ($i = 0; $i < $max; $i++):
 ?>
