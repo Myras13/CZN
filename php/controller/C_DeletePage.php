@@ -1,6 +1,7 @@
 <?php
 
     require_once(dirname(__DIR__).'/model/M_PageRecipe.php');
+    
 
     if(isset($_GET['delete']) && isset($_SESSION['LogInActive'])){
         
@@ -9,9 +10,10 @@
         $idUser = htmlspecialchars($_SESSION['id']);
 
         $host  = $_SERVER['HTTP_HOST'];
-        $route = htmlspecialchars($_SESSION['backroute']);
+        $route = (isset($_SESSION['backroute']))? htmlspecialchars($_SESSION['backroute']): '//CZN/';
 
         if($deletePage->delete($id, $idUser)){
+            
             $successInfo = new SessionNotifications('success', 'Operacja wykonana', "Przepis został usunięty.");
             $successInfo->create();            
             header("Location: http://".$host."".$route."");
