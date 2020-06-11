@@ -1,7 +1,7 @@
 <?php
 
     require_once(dirname(__DIR__).'/model/M_PageRecipe.php');
-    
+    require_once(dirname(__DIR__).'/class/SessionNotifications.php');
 
     if(isset($_GET['delete']) && isset($_SESSION['LogInActive'])){
         
