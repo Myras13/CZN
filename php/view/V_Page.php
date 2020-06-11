@@ -33,7 +33,7 @@
                     foreach($dataIngredients as $value):
             ?>
 
-                <p> <?php echo $value['ingredient']." ".$value['quantity']." ".$value['type_ingredient'] ?> </p>
+                <p> <?php echo $value['ingredient']?> </p>
                 
             <?php  
                     endforeach;
@@ -51,7 +51,9 @@
         <div id="preparation">
             <span class="name">Przygotowanie:</span>
             <br/><br/>
-            <?php echo $dataRecipe['content'] ?>
+            <div id="text-recipe">
+                <p><?php echo $dataRecipe['content'] ?></p>
+            </div>
         </div>
 
         <?php if(isset($_SESSION['nick']) && $dataRecipe['nick'] == $_SESSION['nick']):
