@@ -451,3 +451,11 @@ input[name=close]{
     white-space: pre-wrap;
 
 }
+
+#o_nas
+{
+    margin-top: 20px;
+    padding: 20px 60px;
+    text-align: justify;
+    font-size: 20px;
+}

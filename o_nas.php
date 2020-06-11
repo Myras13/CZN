@@ -19,13 +19,18 @@
             <?php include("templates/logo.php") ?>
             <?php include("templates/topbar.php") ?>
 
-            <div id="content_index">
+            <div id="o_nas">
                 <span class="name">O nas</span>
                 <br/>
                 <p style="text-indent: 50px;">
-                    Serwis ten powstaje w ramach projektu na przedmiot "Inżynieria oprogramowania". Tworzą go Michał Turbański, Michał Marciniak oraz Krzysztof Szymek. Jesteśmy studentami informatyki na drugim roku na Uniwersytecie Zielonogórskim. Prace nad projektem ruszyły w lutym 2020 roku i sukcesywnie serwis jest rozwijany o nowe funkcjonalności. Poprzeczkę postawiliśmy sobie dość wysoko, gdyż serwis obsługuje wiele ciekawych funkcjonalności. Pracujemy nad nim bardzo intensywnie ale sprawia nam to również sporo frajdy i daje dużo satysfakcji kiedy funkcjonalność nad którą pracujemy kilka tygodni ostatecznie wchodzi do użycia i spełnia swoje zadania. Dzięki temu projektowi znacznie rozwinęliśmy też swoje umiejętności w zakresie tworzenia stron internetowych.
+                    Serwis ten powstaje w ramach projektu na przedmiot "Inżynieria oprogramowania". 
+                    Tworzą go Michał Turbański, Michał Marciniak oraz Krzysztof Szymek. 
+                    Jesteśmy studentami informatyki na drugim roku na Uniwersytecie Zielonogórskim. 
+                </p> 
+                <p style="text-indent: 50px;">  
+                    Prace nad projektem ruszyły w lutym 2020 roku i sukcesywnie serwis jest rozwijany o nowe funkcjonalności. 
+                    Poprzeczkę postawiliśmy sobie dość wysoko, gdyż serwis obsługuje wiele ciekawych funkcjonalności. Pracujemy nad nim bardzo intensywnie ale sprawia nam to również sporo frajdy i daje dużo satysfakcji kiedy funkcjonalność nad którą pracujemy kilka tygodni ostatecznie wchodzi do użycia i spełnia swoje zadania. Dzięki temu projektowi znacznie rozwinęliśmy też swoje umiejętności w zakresie tworzenia stron internetowych.
                 </p>
-                
             </div>
 
             <?php include("templates/footer.php") ?>
