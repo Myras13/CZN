@@ -444,3 +444,10 @@ input[name=close]{
     margin-left: 15px;
     width: 100px;
 }
+
+#text-recipe{
+
+    width: 100%;
+    white-space: pre-wrap;
+
+}
