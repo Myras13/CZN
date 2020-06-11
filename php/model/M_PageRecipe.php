@@ -1,6 +1,7 @@
 <?php
 
     require_once(dirname(__DIR__).'/class/ManagementPage.php');
+    require_once(dirname(__DIR__).'/model/M_DeleteIngredients.php');
 
     class M_PageRecipe extends ManagementPage{
 
@@ -50,9 +51,7 @@
 
             $sql = "            
                 SELECT 
-                    I.name AS ingredient,
-                    I.quantity AS quantity,
-                    I.type AS type_ingredient
+                    CONCAT(RPAD(I.name,80,'.'), ' ', I.quantity, ' ', I.type) AS ingredient
                 FROM
                     ingredients I
                 INNER JOIN
@@ -87,6 +86,9 @@
             $result = $owner->fetch();
             if($result['is_owner'] == false)
                 return false;
+
+            $deleteIngredients = new M_DeleteIngredients($idRecipe);
+            $deleteIngredients->delete();
             
             $sql = "DELETE FROM recipe WHERE id_recipe = :idRecipe";
             $sth = $sthPDO->prepare($sql);
