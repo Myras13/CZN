@@ -7,6 +7,7 @@
         protected $title;
         protected $text;
         protected $type;
+        protected $pdo;
 
         public function __construct(){
 
