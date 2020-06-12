@@ -31,7 +31,7 @@
                     continue;
                 }
 
-                $flag = preg_match('/^(component-)([0-9]{1,2})$/', $key);
+                $flag = preg_match('/^(component-)([0-9]{1,3})$/', $key);
 
                 if($flag){
 
