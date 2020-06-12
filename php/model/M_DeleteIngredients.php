@@ -18,10 +18,19 @@
             
         }
 
-        public function delete(){
+        public function deleteByRecipe(){
 
             $sthPDO = $this->pdo->getPDO();
             $sth = $sthPDO->prepare("DELETE FROM ingredients WHERE id_recipe = :id");
+            $sth->bindValue(":id", $this->idRecipe, PDO::PARAM_INT);
+            $sth->execute();
+
+        }
+        
+        public function deleteByID(){
+
+            $sthPDO = $this->pdo->getPDO();
+            $sth = $sthPDO->prepare("DELETE FROM ingredients WHERE id = :id");
             $sth->bindValue(":id", $this->idRecipe, PDO::PARAM_INT);
             $sth->execute();
 
