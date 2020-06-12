@@ -19,7 +19,7 @@ if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION["LogInActive"]))
         <li><a href="#">Konto</a>
             <ul>
                 <?php if($isSetSession):?>
-                    <li><a href='add_recipe.php'>Dodaj przepis</a></li>
+                    <li><a href='add-recipe.php'>Dodaj przepis</a></li>
                     <li><a href='account.php'>Zmień dane</a></li>
                     <li><a href='php/controller/C_logOut.php'>Wyloguj</a></li>
                 <?php else:?>
