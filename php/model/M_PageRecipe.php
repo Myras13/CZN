@@ -88,7 +88,7 @@
                 return false;
 
             $deleteIngredients = new M_DeleteIngredients($idRecipe);
-            $deleteIngredients->delete();
+            $deleteIngredients->deleteByRecipe();
             
             $sql = "DELETE FROM recipe WHERE id_recipe = :idRecipe";
             $sth = $sthPDO->prepare($sql);
