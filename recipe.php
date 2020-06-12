@@ -5,6 +5,8 @@
  
     if(!isset($_GET['delete']) && !isset($_GET['id']))
         $_SESSION['backroute'] = $_SERVER['REQUEST_URI'];
+    
+    $_SESSION['backrouteEdit'] = $_SERVER['REQUEST_URI'];
 
 ?>
 
