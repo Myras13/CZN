@@ -60,7 +60,7 @@
         ?>
 
             <div class="user-modify-recipe">
-                <a href="#">Edytuj</a>
+                <a href="<?php echo 'http://'.$host.'/CZN/edit-recipe.php?id='.$dataRecipe['id'].''?>">Edytuj</a>
                 <a href="<?php echo 'http://'.$host.'/CZN/recipe.php?delete='.$dataRecipe['id'].''?>" onclick="return confirm('Czy na pewno chcesz usunąć przepis ?');">Usuń</a>
             </div>
 
@@ -71,5 +71,3 @@
         return;
     endif;
 ?>
-    
-
