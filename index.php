@@ -26,7 +26,10 @@
                     Na stronie "Coś z niczego" możesz przeglądać przepisy według kilku kategorii w zakładce "Przepisy".
                 </p>
                 <p>
-                    Możesz również zarejestrować się w zakładce konto -> zaloguj się/zarejestruj. Założenie konta da Ci możliwość dodawania własnych przepisów i komentowania przepisów innych.
+                    Możesz również zarejestrować się w zakładce konto -> zaloguj się/zarejestruj. Założenie konta da Ci możliwość dodawania własnych przepisów.
+                </p>
+                <p>
+                    Możesz rownież skorzystać z wyszukiwarki po prawej stronie, która umożliwia przeszukiwanie bazy po konkretnych składnikach.
                 </p>
                 <p>
                     W stopce znajduje się możliwość wysłania informacji zwrotnej, możecie zgłosić nam jakąś uwagę dzięki czemu macie wpływ na budowanie tego serwisu.
