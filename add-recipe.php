@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div style="clear:both;"></div>
-                    <input type="submit" value="Dodaj przepis"/>
+                    <input type="submit" value="Dodaj przepis" style="margin-top: 10px;"/>
                 </form>
             </div>
             <div style="clear:both;"></div>

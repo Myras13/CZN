@@ -92,8 +92,8 @@
             </div>
         </div>
         <div style="clear:both;"></div>
-        <input type="submit" value="Edytuj przepis"/>
-        <a href=<?php echo $_SESSION['backrouteEdit']?>> Anuluj</a>
+        <input type="submit" value="Edytuj przepis" style="margin-top: 10px;"/>
+        <a href=<?php echo $_SESSION['backrouteEdit']?>><button type="button"> Anuluj </button></a>
 
     </form>
 </div>
