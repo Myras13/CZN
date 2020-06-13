@@ -2,7 +2,7 @@
 
     require_once(dirname(__DIR__).'/model/M_PaginatorDraw.php');
 
-    $limit = 10;
+    $limit = 5;
     $flagmode = false;
 
     $page = (isset($_GET['page'])) ? intval($_GET['page']) - 1: 0;

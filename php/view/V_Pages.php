@@ -81,7 +81,7 @@
 <!-- Stronicowanie -->
 <div class="pagination">
 <?php   
-    if($paginator['page'] > 4): 
+    if($paginator['page'] > 2): 
         $linkWeb = "http://$host/CZN/recipe.php";
 
         if(isset($_GET['category']))
