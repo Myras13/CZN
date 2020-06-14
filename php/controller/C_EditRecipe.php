@@ -16,9 +16,10 @@
 
     foreach($data as $value){
         if($value == null){
-           
+            
             $alertInfo = new SessionNotifications('alert', 'Przepis nie został zaaktualizowany', "Spróbuj ponownie.");
-            $alertInfo->create();            
+            $alertInfo->create();   
+            $_SESSION['backrouteUpdateRecipe'] = (isset($_SESSION['backrouteUpdateRecipe'])) ? $_SESSION['backrouteUpdateRecipe'] : "http://$host/CZN/index.php";         
             header("Location: ".$_SESSION['backrouteUpdateRecipe']."");
             return;
 
