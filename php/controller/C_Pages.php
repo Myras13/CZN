@@ -70,7 +70,13 @@
     }
 
     if($flagmode == true && isset($data) && $data!= false){
-        foreach ($data as &$value)
-            $value['content'] = substr($value['content'], 0, 300).'...'; 
+        foreach ($data as &$value){
+            if (strlen($value['content']) > 500) {
+                $value['content'] = wordwrap($value['content'], 500, "~&#");
+                $value['content'] = substr($value['content'], 0, strpos($value['content'], "~&#"));
+            }
+
+            $value['content'] = $value['content'].'...';
+        }
     }
 ?>

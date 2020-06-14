@@ -137,7 +137,39 @@
         }
 
         private function modeOR($ingredients):int{
-            return 1;
+            
+            $sqlWhere = '';
+
+            $iterator = 0;
+            foreach($ingredients as $value){
+
+                $sqlWhere = $sqlWhere."I.name SOUNDS LIKE ?";
+                if(++$iterator < count($ingredients))
+                    $sqlWhere = $sqlWhere." OR ";
+    
+            }
+            
+            $sthPDO = $this->pdo->getPDO();  
+            $sql = "SELECT I.id_recipe AS id FROM ingredients I WHERE $sqlWhere";
+            $sth = $sthPDO->prepare($sql);
+
+            $iterator = 1;
+            foreach($ingredients as $value)
+                $sth->bindValue($iterator++, "%'.$value.'%'", PDO::PARAM_STR);
+
+            $sth->execute();
+            $result = $sth->fetchAll();
+
+            if($result == false)
+                return 0;
+
+            $arrayIDRecipe = [];
+            foreach($result as $value)
+                array_push($arrayIDRecipe, $value['id']);
+
+            $this->recipesSearch = $arrayIDRecipe;
+            return count($arrayIDRecipe);
+                
         }
 
         public function countPagesByIngredients(array $ingredients, string $mode){

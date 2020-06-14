@@ -111,10 +111,15 @@
             $linkWeb = $linkWeb."?category=".$_GET['category']."&page=";
         
         else if(isset($_GET['search'])){
-
+            
+                unset($_GET['page']);
                 $linkWeb = $linkWeb."?";
+                $iterator = 0;
+                
                 foreach($_GET as $key=> $value){
-                    $linkWeb = $linkWeb.$key."=".$value."&";
+                    $linkWeb = $linkWeb.$key."=".$value;
+                    if(++$iterator <= count($_GET))
+                        $linkWeb = $linkWeb."&";
                 }
                 $linkWeb = $linkWeb."page=";
     
