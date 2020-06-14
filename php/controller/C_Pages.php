@@ -11,7 +11,41 @@
     $paginator['page'] = 0;
     $paginator['allPages'] = 0;
 
-    if(isset($_GET['category'])){
+    if(isset($_GET['search']) && $_GET['search']="ByIngredients" && $flagmode == false){
+
+        $flagmode = true;   
+        foreach($_GET as $key => $value){ 
+            $flag = preg_match('/^(components)([0-9]{1,2})$/', $key);
+            if($flag){
+                if(($_GET[$key] == '')){ 
+                    unset($_GET[$key]);
+                    continue;
+                }
+                else
+                    $components[$key] = htmlspecialchars($value);
+            }
+
+        }
+
+        if(isset($_GET['mode']) && count($_GET) <= 2 || !isset($_GET['mode']) && count($_GET) <= 1)
+            return;
+
+        $mode = (isset($_GET['mode']))?"AND":"OR";
+        
+        $ingredients = new M_PaginatorDraw($limit);
+        $ingredients->setCurrentyPage($page);
+        $isExists = $ingredients->countPagesByIngredients($components, $mode);
+        
+        if($isExists == false)
+            return false;
+
+        $paginator['page'] = $ingredients->getPage();
+        $paginator['allPages'] = $ingredients->getAllPages();
+
+        $data = $ingredients->getDataSearchRecipeByIngredients();
+    }
+
+    else if(isset($_GET['category']) && $flagmode == false){
         $flagmode = true;
         $idcategory = intval($_GET['category']);
         $categrypages = new M_PaginatorDraw($limit);
@@ -35,7 +69,7 @@
         $data = $allPages->getDataAll();
     }
 
-    if($flagmode == true && $data != false){
+    if($flagmode == true && isset($data) && $data!= false){
         foreach ($data as &$value)
             $value['content'] = substr($value['content'], 0, 300).'...'; 
     }

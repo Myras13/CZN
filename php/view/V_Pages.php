@@ -3,7 +3,7 @@
     require_once(dirname(__DIR__).'/controller/C_Pages.php');
     require_once(dirname(__DIR__).'/controller/C_DeletePage.php');
     require_once(dirname(__DIR__).'/function/isVarBetween.php');
-
+    
     $host  = $_SERVER['HTTP_HOST'];
 
     if(isset($_GET['delete']))
@@ -12,7 +12,7 @@
     if(isset($_GET['id']))
         return;
 
-    if($data == false):
+    if(!isset($data) || $data == false):
         $alertInfo = new SessionNotifications('alert', 'Brak wyników',"Dotarłeś do miejsca, gdzie diabeł mówi dobranoc.");
         $alertInfo->create();
 ?>
@@ -86,6 +86,15 @@
 
         if(isset($_GET['category']))
             $linkWeb = $linkWeb."?category=".$_GET['category']."&page=1";
+        else if(isset($_GET['search'])){
+
+            $linkWeb = $linkWeb."?";
+            foreach($_GET as $key=> $value){
+                $linkWeb = $linkWeb.$key."=".$value."&";
+            }
+            $linkWeb = $linkWeb."page=1";
+
+        }
         else
             $linkWeb = $linkWeb."?page=1";
 ?>
@@ -100,11 +109,20 @@
 
         if(isset($_GET['category']))
             $linkWeb = $linkWeb."?category=".$_GET['category']."&page=";
+        
+        else if(isset($_GET['search'])){
+
+                $linkWeb = $linkWeb."?";
+                foreach($_GET as $key=> $value){
+                    $linkWeb = $linkWeb.$key."=".$value."&";
+                }
+                $linkWeb = $linkWeb."page=";
+    
+        }
         else
             $linkWeb = $linkWeb."?page=";
 
             $style = ($i == ($paginator['page'] + 1))? "present":"";
-
             if(isVarBetween($i, ($paginator['page'] - 3), ($paginator['page'] + 5))):
 ?>
 
@@ -119,6 +137,16 @@
 
         if(isset($_GET['category']))
             $linkWeb = $linkWeb."?category=".$_GET['category']."&page=".$paginator['allPages']."";
+        
+        else if(isset($_GET['search'])){
+
+                $linkWeb = $linkWeb."?";
+                foreach($_GET as $key=> $value){
+                    $linkWeb = $linkWeb.$key."=".$value."&";
+                }
+                $linkWeb = $linkWeb."page=".$paginator['allPages'];
+    
+        }
         else
             $linkWeb = $linkWeb."?page=".$paginator['allPages']."";
 ?>
