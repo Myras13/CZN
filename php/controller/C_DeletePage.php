@@ -10,7 +10,7 @@
         $idUser = htmlspecialchars($_SESSION['id']);
 
         $host  = $_SERVER['HTTP_HOST'];
-        $route = (isset($_SESSION['backroute']))? htmlspecialchars($_SESSION['backroute']): '//CZN/';
+        $route = (isset($_SESSION['backroute']))? $_SESSION['backroute']: '//CZN/';
 
         if($deletePage->delete($id, $idUser)){
             
