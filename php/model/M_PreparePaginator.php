@@ -77,7 +77,7 @@
 
                 $firstIngredients = array_shift($ingredients);
                        
-                $sql = "SELECT DISTINCT I.id_recipe AS id FROM ingredients I WHERE I.name LIKE ?";
+                $sql = "SELECT DISTINCT I.id_recipe AS id FROM ingredients I WHERE LOWER(I.name) LIKE BINARY LOWER(?)";
                 $sth = $sthPDO->prepare($sql);
                 $sth->bindValue(1, "%".$firstIngredients."%", PDO::PARAM_STR);
                 $sth->execute();
@@ -102,7 +102,7 @@
                     $sqlWhere = '';
                     foreach($ingredients as $value){
 
-                        $sqlWhere = $sqlWhere."SELECT DISTINCT I.id_recipe AS id FROM ingredients I WHERE I.name LIKE ? AND I.id_recipe = $id";
+                        $sqlWhere = $sqlWhere."SELECT DISTINCT I.id_recipe AS id FROM ingredients I WHERE LOWER(I.name) LIKE BINARY LOWER(?) AND I.id_recipe = $id";
                         if(++$iterator < count($ingredients))
                             $sqlWhere = $sqlWhere." INTERSECT ";
             
@@ -143,7 +143,7 @@
             $iterator = 0;
             foreach($ingredients as $value){
 
-                $sqlWhere = $sqlWhere."I.name LIKE ?";
+                $sqlWhere = $sqlWhere."LOWER(I.name) LIKE BINARY LOWER(?)";
                 if(++$iterator < count($ingredients))
                     $sqlWhere = $sqlWhere." OR ";
     
