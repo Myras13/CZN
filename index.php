@@ -43,18 +43,23 @@
             </div>
 
             <div id="find_by_ingredients">
-                <form>
+                <form action="recipe.php" method="GET">
+
+                    <input type="hidden" name="search" value="ByIngredients">
+
                     <span class="ingredient_search">Wyszukiwanie po składnikach</span>
                         </br>
                     <label for="find_by_ingredients">Podaj składniki, które chcesz w swojej potrawie:</label><br/>
                     <table id="ingredients">      
                         <tr><td><input type="hidden" id="counter" value="1"></td></tr>
                         <tr>
-                                <td><input type="text" id="components1" class="inputComponents"></td>
+                                <td><input type="text" name="components1" id="components1" class="inputComponents"></td>
                                 <td><input type="button" class="addButton" id="button1" value="+" onclick="addField();"></td>
                         </tr>
                     </table>
-                    <input type="button" name="serach_by_ingredients" value="Szukaj"/>
+                    <input type="checkbox" id="modeAndActive" name="mode" checked>
+                    <label for="vehicle1"> Przepis ma zawierać wszystkie wymienione składniki</label><br>
+                    <input type="submit" value="Szukaj"/>
                 </form>
             </div>
 
