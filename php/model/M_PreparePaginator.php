@@ -150,7 +150,7 @@
             }
             
             $sthPDO = $this->pdo->getPDO();  
-            $sql = "SELECT I.id_recipe AS id FROM ingredients I WHERE $sqlWhere";
+            $sql = "SELECT DISTINCT I.id_recipe AS id FROM ingredients I WHERE $sqlWhere";
             $sth = $sthPDO->prepare($sql);
 
             $iterator = 1;

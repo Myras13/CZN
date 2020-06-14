@@ -60,7 +60,7 @@
             $sth->bindValue(++$indexBV, $this->limit, PDO::PARAM_INT);
             $sth->execute();
             $result = $sth->fetchAll();
-
+            
             if($result == false)
                 return false;
             else
