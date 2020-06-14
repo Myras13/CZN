@@ -7,6 +7,7 @@ function addField () {
     
     var componentsBox = document.createElement("input");
     componentsBox.setAttribute("type", "text");
+    componentsBox.setAttribute("name", "components" + currentIndex);
     componentsBox.setAttribute("id", "components" + currentIndex);
     componentsBox.setAttribute("class", "inputComponents");
 
