@@ -31,7 +31,12 @@
             if (session_status() == PHP_SESSION_NONE)
                 session_start();
 
-            session_destroy();        
+            unset($_SESSION["id"]);
+            unset($_SESSION["nick"]);
+            unset($_SESSION["email"]);
+            unset($_SESSION["isAccess"]);
+            unset($_SESSION["token"]);
+            unset($_SESSION["LogInActive"]);        
         }
 
     }
