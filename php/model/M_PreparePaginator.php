@@ -77,9 +77,9 @@
 
                 $firstIngredients = array_shift($ingredients);
                        
-                $sql = "SELECT I.id_recipe AS id FROM ingredients I WHERE I.name SOUNDS LIKE ?";
+                $sql = "SELECT DISTINCT I.id_recipe AS id FROM ingredients I WHERE I.name LIKE ?";
                 $sth = $sthPDO->prepare($sql);
-                $sth->bindValue(1, "%'.$firstIngredients.'%'", PDO::PARAM_STR);
+                $sth->bindValue(1, "%".$firstIngredients."%", PDO::PARAM_STR);
                 $sth->execute();
                 $result = $sth->fetchAll();
 
@@ -102,7 +102,7 @@
                     $sqlWhere = '';
                     foreach($ingredients as $value){
 
-                        $sqlWhere = $sqlWhere."SELECT I.id_recipe AS id FROM ingredients I WHERE I.name SOUNDS LIKE ? AND I.id_recipe = $id";
+                        $sqlWhere = $sqlWhere."SELECT DISTINCT I.id_recipe AS id FROM ingredients I WHERE I.name LIKE ? AND I.id_recipe = $id";
                         if(++$iterator < count($ingredients))
                             $sqlWhere = $sqlWhere." INTERSECT ";
             
@@ -119,7 +119,7 @@
 
                     $iterator = 1;
                     foreach($ingredients as $value)
-                        $sth->bindValue($iterator++, "%'.$value.'%'", PDO::PARAM_STR);
+                        $sth->bindValue($iterator++, "%".$value."%", PDO::PARAM_STR);
                 
                     $sth->execute();
                     $result = $sth->fetch();
@@ -143,7 +143,7 @@
             $iterator = 0;
             foreach($ingredients as $value){
 
-                $sqlWhere = $sqlWhere."I.name SOUNDS LIKE ?";
+                $sqlWhere = $sqlWhere."I.name LIKE ?";
                 if(++$iterator < count($ingredients))
                     $sqlWhere = $sqlWhere." OR ";
     
@@ -155,7 +155,7 @@
 
             $iterator = 1;
             foreach($ingredients as $value)
-                $sth->bindValue($iterator++, "%'.$value.'%'", PDO::PARAM_STR);
+                $sth->bindValue($iterator++, "%".$value."%", PDO::PARAM_STR);
 
             $sth->execute();
             $result = $sth->fetchAll();
