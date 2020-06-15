@@ -1,6 +1,7 @@
 <?php
 
     require_once(dirname(__DIR__).'/model/M_PageRecipe.php');
+    require_once(dirname(__DIR__).'/class/SessionNotifications.php');
 
     $host  = $_SERVER['HTTP_HOST']; 
     $id = 0;

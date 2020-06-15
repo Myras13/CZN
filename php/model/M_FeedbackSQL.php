@@ -2,6 +2,7 @@
 
     require_once(dirname(__DIR__).'/core/ConnectDatabase.php'); 
     require_once(dirname(__DIR__).'/class/QuerySQL.php');
+    require_once(dirname(__DIR__).'/class/SessionNotifications.php');
 
     class M_FeedbackSQL{
 
@@ -20,7 +21,7 @@
                 $host = $_SERVER['HTTP_HOST'];
                 $errorInfo = new SessionNotifications('error', 'Błąd krytyczny',"Nie udało połączyć się z bazą danych.");
                 $errorInfo->create();            
-                header("Location: http://$host/CZN");
+                header("Location: http://$host/CZN/break.php");
                 
             }
 

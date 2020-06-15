@@ -19,7 +19,7 @@
            
             $alertInfo = new SessionNotifications('alert', 'Przepis nie został dodany', "Spróbuj ponownie.");
             $alertInfo->create();            
-            header("Location: http://$host/CZN/add_recipe.php");
+            header("Location: http://$host/CZN/add-recipe.php");
             return;
 
         }

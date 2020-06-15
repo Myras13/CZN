@@ -1,6 +1,7 @@
 <?php
 
     require_once(dirname(__DIR__).'/model/M_GetDataRecipe.php');
+    require_once(dirname(__DIR__).'/class/SessionNotifications.php');
 
     if(!isset($_GET['id']) && intval($_GET['id'])){
         $alertInfo = new SessionNotifications('alert', 'Coś poszło nie tak',"Spróbuj jeszcze raz!");
