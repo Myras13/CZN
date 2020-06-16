@@ -19,7 +19,7 @@
             <?php include("templates/logo.php") ?>
             <?php include("templates/topbar.php") ?>
 
-            <div id="content_index">
+            <div id="recoveryForm">
                 <?php require_once('php/view/V_RecoveryPassword.php');?>
             </div>
 

@@ -452,7 +452,7 @@ input[name=close]{
 
 }
 
-#o_nas
+#o_nas, #recoveryForm
 {
     margin-top: 20px;
     padding: 20px 60px;
