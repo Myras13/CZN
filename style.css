@@ -459,3 +459,34 @@ input[name=close]{
     text-align: justify;
     font-size: 20px;
 }
+
+#breakButton {
+    padding: 5px;
+    margin-left: 40%;
+}
+
+#PolnocnyWiatr {
+    text-align: center;
+    margin: 100px 10px;
+}
+
+#message {
+    width: 400px;
+    height: 200px;
+}
+
+#feedbackForm {
+    padding: 30px;
+    text-align: center;
+}
+
+#feedbackTitle {
+    display: inline-block;
+    align: left;
+}
+
+#feedbackMessage {
+    display: inline-block;
+    align: right;
+    padding: 40px;
+}

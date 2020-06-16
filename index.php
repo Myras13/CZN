@@ -57,8 +57,9 @@
                                 <td><input type="button" class="addButton" id="button1" value="+" onclick="addField();"></td>
                         </tr>
                     </table>
+                    <br/>
                     <input type="checkbox" id="modeAndActive" name="mode" checked>
-                    <label for="vehicle1"> Przepis ma zawierać wszystkie wymienione składniki</label><br>
+                    <label for="vehicle1"> Przepis ma zawierać wszystkie wymienione składniki</label><br/>
                     <input type="submit" value="Szukaj"/>
                 </form>
             </div>

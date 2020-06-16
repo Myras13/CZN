@@ -16,8 +16,9 @@
         $alertInfo = new SessionNotifications('alert', 'Brak wyników',"Dotarłeś do miejsca, gdzie diabeł mówi dobranoc.");
         $alertInfo->create();
 ?>
-
-    <h2>Ależ wieje...</h2>
+    <div id="PolnocnyWiatr">
+        <h2>Ależ wieje...</h2>
+    </div>
 
 <?php
         return;

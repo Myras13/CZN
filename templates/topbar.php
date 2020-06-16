@@ -10,7 +10,7 @@ if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION["LogInActive"]))
 <div id="topbar">
     <ol>
         <li><a href="index.php">Strona główna</a></li>
-        <li><a href="#">Przepisy</a>
+        <li><a href="recipe.php">Przepisy</a>
             <ul>
                 <?php require_once(dirname(__DIR__).'/php/view/V_ShowTypeRecipe.php'); ?>
             </ul>

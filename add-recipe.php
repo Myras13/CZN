@@ -31,7 +31,7 @@
                         <label for="preparation">Przygotowanie</label><br/>
                         <textarea name="text_of_recipe" cols="50" rows="10"></textarea><br/><br/>
 
-                        <label for="preparation">Rodzaj przepisu</label><br/>
+                        <label for="preparation">Rodzaj potrawy </label><br/>
                         <?php require_once('php/view/V_TypeRecipeInAdd.php');?>
 
                     </div>

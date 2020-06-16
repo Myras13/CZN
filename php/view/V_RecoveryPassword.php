@@ -11,7 +11,7 @@
         $idt = htmlspecialchars($_GET['idt']);
 ?>
 
-    <div class="form-recovery-password">
+    <div class="form-recovery-password" id="o_nas">
         <span class="name">System odzyskiwania hasła</span>
         <form action="php/controller/C_SetNewPassword.php" method="post">
 
